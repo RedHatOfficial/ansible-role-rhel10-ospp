@@ -80,7 +80,6 @@ auditd_name_format: true
 chronyd_client_only: true
 configure_crypto_policy: true
 configure_openssl_crypto_policy: true
-configure_ssh_crypto_policy: true
 configure_strategy: true
 configure_usbguard_auditbackend: true
 disable_ctrlaltdel_burstaction: true
@@ -126,6 +125,7 @@ package_gnutls_utils_installed: true
 package_openscap_scanner_installed: true
 package_openssh_clients_installed: true
 package_openssh_server_installed: true
+package_sequoia_sq_installed: true
 package_subscription_manager_installed: true
 package_sudo_installed: true
 package_usbguard_installed: true
