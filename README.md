@@ -1,11 +1,10 @@
-DRAFT - Protection Profile for General Purpose Operating Systems
+Protection Profile for General Purpose Operating Systems
 =========
 
-Ansible Role for DRAFT - Protection Profile for General Purpose Operating Systems  
+Ansible Role for Protection Profile for General Purpose Operating Systems  
   
 Profile Description:  
-This is draft profile is based on the Red Hat Enterprise Linux 9 Common Criteria Guidance as  
-guidance for Red Hat Enterprise Linux 10 was not available at the time of release.  
+This profile is based on the Red Hat Enterprise Linux 10 Common Criteria Guidance.  
 Where appropriate, CNSSI 1253 or DoD-specific values are used for  
 configuration, based on Configuration Annex to the OSPP.
 
