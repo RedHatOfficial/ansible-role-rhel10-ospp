@@ -1,7 +1,7 @@
 galaxy_info:
   role_name: rhel10_ospp
   author: ComplianceAsCode development team
-  description: DRAFT - Protection Profile for General Purpose Operating Systems
+  description: Protection Profile for General Purpose Operating Systems
 
   issue_tracker_url: https://github.com/ComplianceAsCode/content/issues
 
