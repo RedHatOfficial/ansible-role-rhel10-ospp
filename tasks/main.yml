@@ -10,6 +10,7 @@
     state: present
   tags:
   - CCE-89668-8
+  - DISA-STIG-RHEL-10-300000
   - enable_strategy
   - low_complexity
   - low_disruption
@@ -17,6 +18,7 @@
   - no_reboot_needed
   - package_crypto-policies_installed
   when:
+  - DISA_STIG_RHEL_10_300000 | bool
   - enable_strategy | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -29,6 +31,7 @@
     name: sudo
     state: present
   when:
+  - DISA_STIG_RHEL_10_200590 | bool
   - enable_strategy | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -38,6 +41,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-87100-4
+  - DISA-STIG-RHEL-10-200590
   - NIST-800-53-CM-6(a)
   - PCI-DSSv4-2.2
   - PCI-DSSv4-2.2.6
@@ -53,6 +57,7 @@
     name: gnutls-utils
     state: present
   when:
+  - DISA_STIG_RHEL_10_200740 | bool
   - enable_strategy | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -62,6 +67,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-90403-7
+  - DISA-STIG-RHEL-10-200740
   - enable_strategy
   - low_complexity
   - low_disruption
@@ -95,6 +101,7 @@
     name: sequoia-sq
     state: present
   when:
+  - DISA_STIG_RHEL_10_001020 | bool
   - enable_strategy | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -104,6 +111,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-86458-7
+  - DISA-STIG-RHEL-10-001020
   - PCI-DSSv4-6.3
   - PCI-DSSv4-6.3.3
   - enable_strategy
@@ -118,6 +126,7 @@
     name: subscription-manager
     state: present
   when:
+  - DISA_STIG_RHEL_10_200500 | bool
   - enable_strategy | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -127,6 +136,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-88542-6
+  - DISA-STIG-RHEL-10-200500
   - enable_strategy
   - low_complexity
   - low_disruption
@@ -145,9 +155,9 @@
   - medium_severity | bool
   - no_reboot_needed | bool
   - package_dnf_automatic_installed | bool
-  - ( not ( "kernel-core" in ansible_facts.packages and "rpm-ostree" in ansible_facts.packages and "bootc" in ansible_facts.packages
-    and not "openshift-kubelet" in ansible_facts.packages and "ostree" in ansible_proc_cmdline ) and not ( ansible_virtualization_type
-    in ["docker", "lxc", "openvz", "podman", "container"] ) )
+  - ( not ( "kernel-core" in ansible_facts.packages and "bootc" in ansible_facts.packages and not "openshift-kubelet" in ansible_facts.packages
+    and "ostree" in ansible_proc_cmdline ) and not ( ansible_virtualization_type in ["docker", "lxc", "openvz", "podman",
+    "container"] ) )
   tags:
   - CCE-87561-7
   - enable_strategy
@@ -162,6 +172,7 @@
     name: firewalld
     state: present
   when:
+  - DISA_STIG_RHEL_10_200530 | bool
   - enable_strategy | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -171,6 +182,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-88164-9
+  - DISA-STIG-RHEL-10-200530
   - NIST-800-53-CM-6(a)
   - PCI-DSSv4-1.2
   - PCI-DSSv4-1.2.1
@@ -186,6 +198,7 @@
     name: fapolicyd
     state: present
   when:
+  - DISA_STIG_RHEL_10_200600 | bool
   - enable_strategy | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -195,6 +208,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-89813-0
+  - DISA-STIG-RHEL-10-200600
   - NIST-800-53-CM-6(a)
   - NIST-800-53-SI-4(22)
   - enable_strategy
@@ -209,6 +223,7 @@
     name: chrony
     state: present
   when:
+  - DISA_STIG_RHEL_10_200540 | bool
   - enable_strategy | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -218,6 +233,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-89591-2
+  - DISA-STIG-RHEL-10-200540
   - PCI-DSS-Req-10.4
   - PCI-DSSv4-10.6
   - PCI-DSSv4-10.6.1
@@ -233,6 +249,7 @@
     name: openssh-clients
     state: present
   when:
+  - DISA_STIG_RHEL_10_200722 | bool
   - enable_strategy | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -242,6 +259,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-86852-1
+  - DISA-STIG-RHEL-10-200722
   - enable_strategy
   - low_complexity
   - low_disruption
@@ -254,6 +272,7 @@
     name: openssh-server
     state: present
   when:
+  - DISA_STIG_RHEL_10_200720 | bool
   - enable_strategy | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -263,6 +282,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-89241-4
+  - DISA-STIG-RHEL-10-200720
   - NIST-800-53-CM-6(a)
   - enable_strategy
   - low_complexity
@@ -276,6 +296,7 @@
     name: usbguard
     state: present
   when:
+  - DISA_STIG_RHEL_10_200560 | bool
   - enable_strategy | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -285,6 +306,7 @@
   - ( ansible_architecture != "s390x" and "kernel-core" in ansible_facts.packages )
   tags:
   - CCE-87756-3
+  - DISA-STIG-RHEL-10-200560
   - NIST-800-53-CM-8(3)
   - NIST-800-53-IA-3
   - enable_strategy
@@ -299,6 +321,7 @@
     name: audit
     state: present
   when:
+  - DISA_STIG_RHEL_10_200660 | bool
   - enable_strategy | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -308,6 +331,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-88240-7
+  - DISA-STIG-RHEL-10-200660
   - NIST-800-53-AC-7(a)
   - NIST-800-53-AU-12(2)
   - NIST-800-53-AU-14
@@ -361,6 +385,7 @@
     when: socket_file_exists.stdout_lines is search("debug-shell.socket", multiline=True)
   tags:
   - CCE-90212-2
+  - DISA-STIG-RHEL-10-700970
   - NIST-800-171-3.4.5
   - NIST-800-53-CM-6
   - disable_strategy
@@ -371,6 +396,7 @@
   - service_debug-shell_disabled
   - special_service_block
   when:
+  - DISA_STIG_RHEL_10_700970 | bool
   - disable_strategy | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -392,6 +418,7 @@
     - '"firewalld" in ansible_facts.packages'
   tags:
   - CCE-88110-2
+  - DISA-STIG-RHEL-10-200531
   - NIST-800-171-3.1.3
   - NIST-800-171-3.4.7
   - NIST-800-53-AC-4
@@ -409,6 +436,7 @@
   - service_firewalld_enabled
   - special_service_block
   when:
+  - DISA_STIG_RHEL_10_200531 | bool
   - enable_strategy | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -449,6 +477,7 @@
     when: socket_file_exists.stdout_lines is search("kdump.socket", multiline=True)
   tags:
   - CCE-88407-2
+  - DISA-STIG-RHEL-10-701200
   - NIST-800-53-CM-6(a)
   - NIST-800-53-CM-7(a)
   - NIST-800-53-CM-7(b)
@@ -460,6 +489,7 @@
   - service_kdump_disabled
   - special_service_block
   when:
+  - DISA_STIG_RHEL_10_701200 | bool
   - disable_strategy | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -481,6 +511,7 @@
     - '"fapolicyd" in ansible_facts.packages'
   tags:
   - CCE-88147-4
+  - DISA-STIG-RHEL-10-200601
   - NIST-800-53-CM-6(a)
   - NIST-800-53-SI-4(22)
   - enable_strategy
@@ -491,6 +522,7 @@
   - service_fapolicyd_enabled
   - special_service_block
   when:
+  - DISA_STIG_RHEL_10_200601 | bool
   - enable_strategy | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -512,6 +544,7 @@
     - '"usbguard" in ansible_facts.packages'
   tags:
   - CCE-87560-9
+  - DISA-STIG-RHEL-10-200561
   - NIST-800-53-CM-8(3)(a)
   - NIST-800-53-IA-3
   - enable_strategy
@@ -522,6 +555,7 @@
   - service_usbguard_enabled
   - special_service_block
   when:
+  - DISA_STIG_RHEL_10_200561 | bool
   - enable_strategy | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -544,6 +578,7 @@
   tags:
   - CCE-87955-1
   - CJIS-5.4.1.1
+  - DISA-STIG-RHEL-10-200661
   - NIST-800-171-3.3.1
   - NIST-800-171-3.3.2
   - NIST-800-171-3.3.6
@@ -567,6 +602,7 @@
   - service_auditd_enabled
   - special_service_block
   when:
+  - DISA_STIG_RHEL_10_200661 | bool
   - enable_strategy | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -590,6 +626,7 @@
   check_mode: false
   tags:
   - CCE-89085-5
+  - DISA-STIG-RHEL-10-300010
   - NIST-800-53-AC-17(2)
   - NIST-800-53-AC-17(a)
   - NIST-800-53-CM-6(a)
@@ -606,6 +643,7 @@
   - no_reboot_needed
   - restrict_strategy
   when:
+  - DISA_STIG_RHEL_10_300010 | bool
   - configure_crypto_policy | bool
   - high_severity | bool
   - low_complexity | bool
@@ -622,6 +660,7 @@
   check_mode: false
   tags:
   - CCE-89085-5
+  - DISA-STIG-RHEL-10-300010
   - NIST-800-53-AC-17(2)
   - NIST-800-53-AC-17(a)
   - NIST-800-53-CM-6(a)
@@ -638,6 +677,7 @@
   - no_reboot_needed
   - restrict_strategy
   when:
+  - DISA_STIG_RHEL_10_300010 | bool
   - configure_crypto_policy | bool
   - high_severity | bool
   - low_complexity | bool
@@ -654,6 +694,7 @@
   check_mode: false
   tags:
   - CCE-89085-5
+  - DISA-STIG-RHEL-10-300010
   - NIST-800-53-AC-17(2)
   - NIST-800-53-AC-17(a)
   - NIST-800-53-CM-6(a)
@@ -670,6 +711,7 @@
   - no_reboot_needed
   - restrict_strategy
   when:
+  - DISA_STIG_RHEL_10_300010 | bool
   - configure_crypto_policy | bool
   - high_severity | bool
   - low_complexity | bool
@@ -686,6 +728,7 @@
   check_mode: false
   tags:
   - CCE-89085-5
+  - DISA-STIG-RHEL-10-300010
   - NIST-800-53-AC-17(2)
   - NIST-800-53-AC-17(a)
   - NIST-800-53-CM-6(a)
@@ -702,6 +745,7 @@
   - no_reboot_needed
   - restrict_strategy
   when:
+  - DISA_STIG_RHEL_10_300010 | bool
   - configure_crypto_policy | bool
   - high_severity | bool
   - low_complexity | bool
@@ -712,6 +756,7 @@
 - name: Configure System Cryptography Policy - Verify that Crypto Policy is Set (runtime)
   ansible.builtin.command: /usr/bin/update-crypto-policies --set {{ var_system_crypto_policy }}
   when:
+  - DISA_STIG_RHEL_10_300010 | bool
   - configure_crypto_policy | bool
   - high_severity | bool
   - low_complexity | bool
@@ -722,6 +767,7 @@
     and config_file_stat.stat.mtime > current_file_stat.stat.mtime) or (not nss_config_stat.stat.exists)
   tags:
   - CCE-89085-5
+  - DISA-STIG-RHEL-10-300010
   - NIST-800-53-AC-17(2)
   - NIST-800-53-AC-17(a)
   - NIST-800-53-CM-6(a)
@@ -807,6 +853,7 @@
     insertafter: ^\s*\[\s*crypto_policy\s*]\s*
     line: .include /etc/crypto-policies/back-ends/opensslcnf.config
     path: /etc/pki/tls/openssl.cnf
+    mode: 420
   when:
   - configure_openssl_crypto_policy | bool
   - low_complexity | bool
@@ -842,6 +889,7 @@
 
       .include /etc/crypto-policies/back-ends/opensslcnf.config'
     path: /etc/pki/tls/openssl.cnf
+    mode: 420
   when:
   - configure_openssl_crypto_policy | bool
   - low_complexity | bool
@@ -875,15 +923,16 @@
     option: apply_updates
     value: 'yes'
     create: true
+    mode: 420
   when:
   - low_complexity | bool
   - medium_disruption | bool
   - medium_severity | bool
   - no_reboot_needed | bool
   - unknown_strategy | bool
-  - ( not ( "kernel-core" in ansible_facts.packages and "rpm-ostree" in ansible_facts.packages and "bootc" in ansible_facts.packages
-    and not "openshift-kubelet" in ansible_facts.packages and "ostree" in ansible_proc_cmdline ) and not ( ansible_virtualization_type
-    in ["docker", "lxc", "openvz", "podman", "container"] ) )
+  - ( not ( "kernel-core" in ansible_facts.packages and "bootc" in ansible_facts.packages and not "openshift-kubelet" in ansible_facts.packages
+    and "ostree" in ansible_proc_cmdline ) and not ( ansible_virtualization_type in ["docker", "lxc", "openvz", "podman",
+    "container"] ) )
   tags:
   - CCE-86671-5
   - NIST-800-53-CM-6(a)
@@ -905,6 +954,7 @@
     no_extra_spaces: true
     create: false
   when:
+  - DISA_STIG_RHEL_10_001030 | bool
   - configure_strategy | bool
   - ensure_gpgcheck_globally_activated | bool
   - high_severity | bool
@@ -915,6 +965,7 @@
   tags:
   - CCE-88404-9
   - CJIS-5.10.4.1
+  - DISA-STIG-RHEL-10-001030
   - NIST-800-171-3.4.8
   - NIST-800-53-CM-11(a)
   - NIST-800-53-CM-11(b)
@@ -954,7 +1005,9 @@
       value: 1
       no_extra_spaces: true
       create: true
+      mode: 420
   when:
+  - DISA_STIG_RHEL_10_001040 | bool
   - ensure_gpgcheck_local_packages | bool
   - high_severity | bool
   - low_complexity | bool
@@ -964,6 +1017,7 @@
   - '"dnf" in ansible_facts.packages'
   tags:
   - CCE-89409-7
+  - DISA-STIG-RHEL-10-001040
   - NIST-800-171-3.4.8
   - NIST-800-53-CM-11(a)
   - NIST-800-53-CM-11(b)
@@ -1065,6 +1119,7 @@
   tags:
   - CCE-88256-3
   - CJIS-5.10.4.1
+  - DISA-STIG-RHEL-10-001020
   - NIST-800-171-3.4.8
   - NIST-800-53-CM-5(3)
   - NIST-800-53-CM-6(a)
@@ -1081,6 +1136,7 @@
   - no_reboot_needed
   - restrict_strategy
   when:
+  - DISA_STIG_RHEL_10_001020 | bool
   - ensure_redhat_gpgkey_installed | bool
   - high_severity | bool
   - medium_complexity | bool
@@ -1095,6 +1151,7 @@
   check_mode: false
   register: sq_fingerprints
   when:
+  - DISA_STIG_RHEL_10_001020 | bool
   - ensure_redhat_gpgkey_installed | bool
   - high_severity | bool
   - medium_complexity | bool
@@ -1105,6 +1162,7 @@
   tags:
   - CCE-88256-3
   - CJIS-5.10.4.1
+  - DISA-STIG-RHEL-10-001020
   - NIST-800-171-3.4.8
   - NIST-800-53-CM-5(3)
   - NIST-800-53-CM-6(a)
@@ -1126,6 +1184,7 @@
     gpg_installed_fingerprints: '{{ sq_fingerprints.stdout | regex_findall(''Fingerprint:\s*([0-9A-Fa-f]+)'', ''\1'') | list
       }}'
   when:
+  - DISA_STIG_RHEL_10_001020 | bool
   - ensure_redhat_gpgkey_installed | bool
   - high_severity | bool
   - medium_complexity | bool
@@ -1136,6 +1195,7 @@
   tags:
   - CCE-88256-3
   - CJIS-5.10.4.1
+  - DISA-STIG-RHEL-10-001020
   - NIST-800-171-3.4.8
   - NIST-800-53-CM-5(3)
   - NIST-800-53-CM-6(a)
@@ -1159,6 +1219,7 @@
   failed_when: false
   check_mode: false
   when:
+  - DISA_STIG_RHEL_10_001020 | bool
   - ensure_redhat_gpgkey_installed | bool
   - high_severity | bool
   - medium_complexity | bool
@@ -1169,6 +1230,7 @@
   tags:
   - CCE-88256-3
   - CJIS-5.10.4.1
+  - DISA-STIG-RHEL-10-001020
   - NIST-800-171-3.4.8
   - NIST-800-53-CM-5(3)
   - NIST-800-53-CM-6(a)
@@ -1190,6 +1252,7 @@
     gpg_installed_fingerprints: '{{ gpg_fingerprints.stdout | regex_findall(''^pub.*\n(?:^fpr[:]*)([0-9A-Fa-f]*)'', ''\1'')
       | list }}'
   when:
+  - DISA_STIG_RHEL_10_001020 | bool
   - ensure_redhat_gpgkey_installed | bool
   - high_severity | bool
   - medium_complexity | bool
@@ -1200,6 +1263,7 @@
   tags:
   - CCE-88256-3
   - CJIS-5.10.4.1
+  - DISA-STIG-RHEL-10-001020
   - NIST-800-171-3.4.8
   - NIST-800-53-CM-5(3)
   - NIST-800-53-CM-6(a)
@@ -1222,6 +1286,7 @@
     - 567E347AD0044ADE55BA8A5F199E2F91FD431D51
     - 7E4624258C406535D56D6F135054E4A45A6340B3
   when:
+  - DISA_STIG_RHEL_10_001020 | bool
   - ensure_redhat_gpgkey_installed | bool
   - high_severity | bool
   - medium_complexity | bool
@@ -1232,6 +1297,7 @@
   tags:
   - CCE-88256-3
   - CJIS-5.10.4.1
+  - DISA-STIG-RHEL-10-001020
   - NIST-800-171-3.4.8
   - NIST-800-53-CM-5(3)
   - NIST-800-53-CM-6(a)
@@ -1255,6 +1321,7 @@
     - 7E4624258C406535D56D6F135054E4A45A6340B3
     - FCD355B305707A62DA143AB6E422397E50FE8467A2A95343D246D6276AFEDF8F
   when:
+  - DISA_STIG_RHEL_10_001020 | bool
   - ensure_redhat_gpgkey_installed | bool
   - high_severity | bool
   - medium_complexity | bool
@@ -1265,6 +1332,7 @@
   tags:
   - CCE-88256-3
   - CJIS-5.10.4.1
+  - DISA-STIG-RHEL-10-001020
   - NIST-800-171-3.4.8
   - NIST-800-53-CM-5(3)
   - NIST-800-53-CM-6(a)
@@ -1284,6 +1352,7 @@
 - name: 'Ensure Red Hat GPG Key Installed: Import RedHat GPG key'
   ansible.builtin.command: rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
   when:
+  - DISA_STIG_RHEL_10_001020 | bool
   - ensure_redhat_gpgkey_installed | bool
   - high_severity | bool
   - medium_complexity | bool
@@ -1297,6 +1366,7 @@
   tags:
   - CCE-88256-3
   - CJIS-5.10.4.1
+  - DISA-STIG-RHEL-10-001020
   - NIST-800-171-3.4.8
   - NIST-800-53-CM-5(3)
   - NIST-800-53-CM-6(a)
@@ -1328,9 +1398,9 @@
   - low_disruption | bool
   - medium_severity | bool
   - no_reboot_needed | bool
-  - ( not ( "kernel-core" in ansible_facts.packages and "rpm-ostree" in ansible_facts.packages and "bootc" in ansible_facts.packages
-    and not "openshift-kubelet" in ansible_facts.packages and "ostree" in ansible_proc_cmdline ) and not ( ansible_virtualization_type
-    in ["docker", "lxc", "openvz", "podman", "container"] ) )
+  - ( not ( "kernel-core" in ansible_facts.packages and "bootc" in ansible_facts.packages and not "openshift-kubelet" in ansible_facts.packages
+    and "ostree" in ansible_proc_cmdline ) and not ( ansible_virtualization_type in ["docker", "lxc", "openvz", "podman",
+    "container"] ) )
   tags:
   - CCE-90249-4
   - NIST-800-53-CM-6(a)
@@ -1348,6 +1418,7 @@
     path: /usr/bin/authselect
   register: result_authselect_present
   when:
+  - DISA_STIG_RHEL_10_600410 | bool
   - accounts_passwords_pam_faillock_deny | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -1359,6 +1430,7 @@
   tags:
   - CCE-87388-5
   - CJIS-5.5.3
+  - DISA-STIG-RHEL-10-600410
   - NIST-800-171-3.1.8
   - NIST-800-53-AC-7(a)
   - NIST-800-53-CM-6(a)
@@ -1415,6 +1487,7 @@
     - result_authselect_enable_feature_cmd is not skipped
     - result_authselect_enable_feature_cmd is success
   when:
+  - DISA_STIG_RHEL_10_600410 | bool
   - accounts_passwords_pam_faillock_deny | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -1427,6 +1500,7 @@
   tags:
   - CCE-87388-5
   - CJIS-5.5.3
+  - DISA-STIG-RHEL-10-600410
   - NIST-800-171-3.1.8
   - NIST-800-53-AC-7(a)
   - NIST-800-53-CM-6(a)
@@ -1484,6 +1558,7 @@
     when:
     - result_pam_faillock_is_enabled.found == 0
   when:
+  - DISA_STIG_RHEL_10_600410 | bool
   - accounts_passwords_pam_faillock_deny | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -1496,6 +1571,7 @@
   tags:
   - CCE-87388-5
   - CJIS-5.5.3
+  - DISA-STIG-RHEL-10-600410
   - NIST-800-171-3.1.8
   - NIST-800-53-AC-7(a)
   - NIST-800-53-CM-6(a)
@@ -1514,6 +1590,7 @@
     path: /etc/security/faillock.conf
   register: result_faillock_conf_check
   when:
+  - DISA_STIG_RHEL_10_600410 | bool
   - accounts_passwords_pam_faillock_deny | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -1525,6 +1602,7 @@
   tags:
   - CCE-87388-5
   - CJIS-5.5.3
+  - DISA-STIG-RHEL-10-600410
   - NIST-800-171-3.1.8
   - NIST-800-53-AC-7(a)
   - NIST-800-53-CM-6(a)
@@ -1545,6 +1623,7 @@
     line: deny = {{ var_accounts_passwords_pam_faillock_deny }}
     state: present
   when:
+  - DISA_STIG_RHEL_10_600410 | bool
   - accounts_passwords_pam_faillock_deny | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -1557,6 +1636,7 @@
   tags:
   - CCE-87388-5
   - CJIS-5.5.3
+  - DISA-STIG-RHEL-10-600410
   - NIST-800-171-3.1.8
   - NIST-800-53-AC-7(a)
   - NIST-800-53-CM-6(a)
@@ -1885,6 +1965,7 @@
     when:
     - result_pam_password_auth_file_present.stat.exists
   when:
+  - DISA_STIG_RHEL_10_600410 | bool
   - accounts_passwords_pam_faillock_deny | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -1897,6 +1978,7 @@
   tags:
   - CCE-87388-5
   - CJIS-5.5.3
+  - DISA-STIG-RHEL-10-600410
   - NIST-800-171-3.1.8
   - NIST-800-53-AC-7(a)
   - NIST-800-53-CM-6(a)
@@ -1974,6 +2056,7 @@
     when:
     - result_pam_faillock_deny_parameter_is_present.found > 0
   when:
+  - DISA_STIG_RHEL_10_600410 | bool
   - accounts_passwords_pam_faillock_deny | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -1986,6 +2069,7 @@
   tags:
   - CCE-87388-5
   - CJIS-5.5.3
+  - DISA-STIG-RHEL-10-600410
   - NIST-800-171-3.1.8
   - NIST-800-53-AC-7(a)
   - NIST-800-53-CM-6(a)
@@ -2004,6 +2088,7 @@
     path: /usr/bin/authselect
   register: result_authselect_present
   when:
+  - DISA_STIG_RHEL_10_600420 | bool
   - accounts_passwords_pam_faillock_interval | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -2014,6 +2099,7 @@
   - '"pam" in ansible_facts.packages'
   tags:
   - CCE-86672-3
+  - DISA-STIG-RHEL-10-600420
   - NIST-800-53-AC-7(a)
   - NIST-800-53-CM-6(a)
   - accounts_passwords_pam_faillock_interval
@@ -2068,6 +2154,7 @@
     - result_authselect_enable_feature_cmd is not skipped
     - result_authselect_enable_feature_cmd is success
   when:
+  - DISA_STIG_RHEL_10_600420 | bool
   - accounts_passwords_pam_faillock_interval | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -2079,6 +2166,7 @@
   - result_authselect_present.stat.exists
   tags:
   - CCE-86672-3
+  - DISA-STIG-RHEL-10-600420
   - NIST-800-53-AC-7(a)
   - NIST-800-53-CM-6(a)
   - accounts_passwords_pam_faillock_interval
@@ -2132,6 +2220,7 @@
     when:
     - result_pam_faillock_is_enabled.found == 0
   when:
+  - DISA_STIG_RHEL_10_600420 | bool
   - accounts_passwords_pam_faillock_interval | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -2143,6 +2232,7 @@
   - not result_authselect_present.stat.exists
   tags:
   - CCE-86672-3
+  - DISA-STIG-RHEL-10-600420
   - NIST-800-53-AC-7(a)
   - NIST-800-53-CM-6(a)
   - accounts_passwords_pam_faillock_interval
@@ -2157,6 +2247,7 @@
     path: /etc/security/faillock.conf
   register: result_faillock_conf_check
   when:
+  - DISA_STIG_RHEL_10_600420 | bool
   - accounts_passwords_pam_faillock_interval | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -2167,6 +2258,7 @@
   - '"pam" in ansible_facts.packages'
   tags:
   - CCE-86672-3
+  - DISA-STIG-RHEL-10-600420
   - NIST-800-53-AC-7(a)
   - NIST-800-53-CM-6(a)
   - accounts_passwords_pam_faillock_interval
@@ -2183,6 +2275,7 @@
     line: fail_interval = {{ var_accounts_passwords_pam_faillock_fail_interval }}
     state: present
   when:
+  - DISA_STIG_RHEL_10_600420 | bool
   - accounts_passwords_pam_faillock_interval | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -2194,6 +2287,7 @@
   - result_faillock_conf_check.stat.exists
   tags:
   - CCE-86672-3
+  - DISA-STIG-RHEL-10-600420
   - NIST-800-53-AC-7(a)
   - NIST-800-53-CM-6(a)
   - accounts_passwords_pam_faillock_interval
@@ -2527,6 +2621,7 @@
     when:
     - result_pam_password_auth_file_present.stat.exists
   when:
+  - DISA_STIG_RHEL_10_600420 | bool
   - accounts_passwords_pam_faillock_interval | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -2538,6 +2633,7 @@
   - result_faillock_conf_check.stat.exists
   tags:
   - CCE-86672-3
+  - DISA-STIG-RHEL-10-600420
   - NIST-800-53-AC-7(a)
   - NIST-800-53-CM-6(a)
   - accounts_passwords_pam_faillock_interval
@@ -2611,6 +2707,7 @@
     when:
     - result_pam_faillock_fail_interval_parameter_is_present.found > 0
   when:
+  - DISA_STIG_RHEL_10_600420 | bool
   - accounts_passwords_pam_faillock_interval | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -2622,6 +2719,7 @@
   - not result_faillock_conf_check.stat.exists
   tags:
   - CCE-86672-3
+  - DISA-STIG-RHEL-10-600420
   - NIST-800-53-AC-7(a)
   - NIST-800-53-CM-6(a)
   - accounts_passwords_pam_faillock_interval
@@ -2636,6 +2734,7 @@
     path: /usr/bin/authselect
   register: result_authselect_present
   when:
+  - DISA_STIG_RHEL_10_600425 | bool
   - accounts_passwords_pam_faillock_unlock_time | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -2647,6 +2746,7 @@
   tags:
   - CCE-89250-5
   - CJIS-5.5.3
+  - DISA-STIG-RHEL-10-600425
   - NIST-800-171-3.1.8
   - NIST-800-53-AC-7(b)
   - NIST-800-53-CM-6(a)
@@ -2703,6 +2803,7 @@
     - result_authselect_enable_feature_cmd is not skipped
     - result_authselect_enable_feature_cmd is success
   when:
+  - DISA_STIG_RHEL_10_600425 | bool
   - accounts_passwords_pam_faillock_unlock_time | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -2715,6 +2816,7 @@
   tags:
   - CCE-89250-5
   - CJIS-5.5.3
+  - DISA-STIG-RHEL-10-600425
   - NIST-800-171-3.1.8
   - NIST-800-53-AC-7(b)
   - NIST-800-53-CM-6(a)
@@ -2772,6 +2874,7 @@
     when:
     - result_pam_faillock_is_enabled.found == 0
   when:
+  - DISA_STIG_RHEL_10_600425 | bool
   - accounts_passwords_pam_faillock_unlock_time | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -2784,6 +2887,7 @@
   tags:
   - CCE-89250-5
   - CJIS-5.5.3
+  - DISA-STIG-RHEL-10-600425
   - NIST-800-171-3.1.8
   - NIST-800-53-AC-7(b)
   - NIST-800-53-CM-6(a)
@@ -2802,6 +2906,7 @@
     path: /etc/security/faillock.conf
   register: result_faillock_conf_check
   when:
+  - DISA_STIG_RHEL_10_600425 | bool
   - accounts_passwords_pam_faillock_unlock_time | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -2813,6 +2918,7 @@
   tags:
   - CCE-89250-5
   - CJIS-5.5.3
+  - DISA-STIG-RHEL-10-600425
   - NIST-800-171-3.1.8
   - NIST-800-53-AC-7(b)
   - NIST-800-53-CM-6(a)
@@ -2833,6 +2939,7 @@
     line: unlock_time = {{ var_accounts_passwords_pam_faillock_unlock_time }}
     state: present
   when:
+  - DISA_STIG_RHEL_10_600425 | bool
   - accounts_passwords_pam_faillock_unlock_time | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -2845,6 +2952,7 @@
   tags:
   - CCE-89250-5
   - CJIS-5.5.3
+  - DISA-STIG-RHEL-10-600425
   - NIST-800-171-3.1.8
   - NIST-800-53-AC-7(b)
   - NIST-800-53-CM-6(a)
@@ -3175,6 +3283,7 @@
     when:
     - result_pam_password_auth_file_present.stat.exists
   when:
+  - DISA_STIG_RHEL_10_600425 | bool
   - accounts_passwords_pam_faillock_unlock_time | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -3187,6 +3296,7 @@
   tags:
   - CCE-89250-5
   - CJIS-5.5.3
+  - DISA-STIG-RHEL-10-600425
   - NIST-800-171-3.1.8
   - NIST-800-53-AC-7(b)
   - NIST-800-53-CM-6(a)
@@ -3264,6 +3374,7 @@
     when:
     - result_pam_faillock_unlock_time_parameter_is_present.found > 0
   when:
+  - DISA_STIG_RHEL_10_600425 | bool
   - accounts_passwords_pam_faillock_unlock_time | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -3276,6 +3387,7 @@
   tags:
   - CCE-89250-5
   - CJIS-5.5.3
+  - DISA-STIG-RHEL-10-600425
   - NIST-800-171-3.1.8
   - NIST-800-53-AC-7(b)
   - NIST-800-53-CM-6(a)
@@ -3295,6 +3407,7 @@
     patterns: '*.conf'
   register: pwquality_conf_d_files
   when:
+  - DISA_STIG_RHEL_10_600310 | bool
   - accounts_password_pam_dcredit | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -3305,6 +3418,7 @@
   - '"libpwquality" in ansible_facts.packages'
   tags:
   - CCE-89089-7
+  - DISA-STIG-RHEL-10-600310
   - NIST-800-53-CM-6(a)
   - NIST-800-53-IA-5(1)(a)
   - NIST-800-53-IA-5(4)
@@ -3326,6 +3440,7 @@
     state: absent
   with_items: '{{ pwquality_conf_d_files.files }}'
   when:
+  - DISA_STIG_RHEL_10_600310 | bool
   - accounts_password_pam_dcredit | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -3336,6 +3451,7 @@
   - '"libpwquality" in ansible_facts.packages'
   tags:
   - CCE-89089-7
+  - DISA-STIG-RHEL-10-600310
   - NIST-800-53-CM-6(a)
   - NIST-800-53-IA-5(1)(a)
   - NIST-800-53-IA-5(4)
@@ -3356,7 +3472,9 @@
     dest: /etc/security/pwquality.conf
     regexp: ^#?\s*dcredit
     line: dcredit = {{ var_password_pam_dcredit }}
+    mode: 420
   when:
+  - DISA_STIG_RHEL_10_600310 | bool
   - accounts_password_pam_dcredit | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -3367,6 +3485,7 @@
   - '"libpwquality" in ansible_facts.packages'
   tags:
   - CCE-89089-7
+  - DISA-STIG-RHEL-10-600310
   - NIST-800-53-CM-6(a)
   - NIST-800-53-IA-5(1)(a)
   - NIST-800-53-IA-5(4)
@@ -3387,6 +3506,7 @@
     patterns: '*.conf'
   register: pwquality_conf_d_files
   when:
+  - DISA_STIG_RHEL_10_600240 | bool
   - accounts_password_pam_lcredit | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -3397,6 +3517,7 @@
   - '"libpwquality" in ansible_facts.packages'
   tags:
   - CCE-90276-7
+  - DISA-STIG-RHEL-10-600240
   - NIST-800-53-CM-6(a)
   - NIST-800-53-IA-5(1)(a)
   - NIST-800-53-IA-5(4)
@@ -3418,6 +3539,7 @@
     state: absent
   with_items: '{{ pwquality_conf_d_files.files }}'
   when:
+  - DISA_STIG_RHEL_10_600240 | bool
   - accounts_password_pam_lcredit | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -3428,6 +3550,7 @@
   - '"libpwquality" in ansible_facts.packages'
   tags:
   - CCE-90276-7
+  - DISA-STIG-RHEL-10-600240
   - NIST-800-53-CM-6(a)
   - NIST-800-53-IA-5(1)(a)
   - NIST-800-53-IA-5(4)
@@ -3448,7 +3571,9 @@
     dest: /etc/security/pwquality.conf
     regexp: ^#?\s*lcredit
     line: lcredit = {{ var_password_pam_lcredit }}
+    mode: 420
   when:
+  - DISA_STIG_RHEL_10_600240 | bool
   - accounts_password_pam_lcredit | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -3459,6 +3584,7 @@
   - '"libpwquality" in ansible_facts.packages'
   tags:
   - CCE-90276-7
+  - DISA-STIG-RHEL-10-600240
   - NIST-800-53-CM-6(a)
   - NIST-800-53-IA-5(1)(a)
   - NIST-800-53-IA-5(4)
@@ -3479,6 +3605,7 @@
     patterns: '*.conf'
   register: pwquality_conf_d_files
   when:
+  - DISA_STIG_RHEL_10_600220 | bool
   - accounts_password_pam_minlen | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -3490,6 +3617,7 @@
   tags:
   - CCE-87852-0
   - CJIS-5.6.2.1.1
+  - DISA-STIG-RHEL-10-600220
   - NIST-800-53-CM-6(a)
   - NIST-800-53-IA-5(1)(a)
   - NIST-800-53-IA-5(4)
@@ -3511,6 +3639,7 @@
     state: absent
   with_items: '{{ pwquality_conf_d_files.files }}'
   when:
+  - DISA_STIG_RHEL_10_600220 | bool
   - accounts_password_pam_minlen | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -3522,6 +3651,7 @@
   tags:
   - CCE-87852-0
   - CJIS-5.6.2.1.1
+  - DISA-STIG-RHEL-10-600220
   - NIST-800-53-CM-6(a)
   - NIST-800-53-IA-5(1)(a)
   - NIST-800-53-IA-5(4)
@@ -3542,7 +3672,9 @@
     dest: /etc/security/pwquality.conf
     regexp: ^#?\s*minlen
     line: minlen = {{ var_password_pam_minlen }}
+    mode: 420
   when:
+  - DISA_STIG_RHEL_10_600220 | bool
   - accounts_password_pam_minlen | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -3554,6 +3686,7 @@
   tags:
   - CCE-87852-0
   - CJIS-5.6.2.1.1
+  - DISA-STIG-RHEL-10-600220
   - NIST-800-53-CM-6(a)
   - NIST-800-53-IA-5(1)(a)
   - NIST-800-53-IA-5(4)
@@ -3574,6 +3707,7 @@
     patterns: '*.conf'
   register: pwquality_conf_d_files
   when:
+  - DISA_STIG_RHEL_10_600230 | bool
   - accounts_password_pam_ocredit | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -3584,6 +3718,7 @@
   - '"libpwquality" in ansible_facts.packages'
   tags:
   - CCE-89297-6
+  - DISA-STIG-RHEL-10-600230
   - NIST-800-53-CM-6(a)
   - NIST-800-53-IA-5(1)(a)
   - NIST-800-53-IA-5(4)
@@ -3602,6 +3737,7 @@
     state: absent
   with_items: '{{ pwquality_conf_d_files.files }}'
   when:
+  - DISA_STIG_RHEL_10_600230 | bool
   - accounts_password_pam_ocredit | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -3612,6 +3748,7 @@
   - '"libpwquality" in ansible_facts.packages'
   tags:
   - CCE-89297-6
+  - DISA-STIG-RHEL-10-600230
   - NIST-800-53-CM-6(a)
   - NIST-800-53-IA-5(1)(a)
   - NIST-800-53-IA-5(4)
@@ -3629,7 +3766,9 @@
     dest: /etc/security/pwquality.conf
     regexp: ^#?\s*ocredit
     line: ocredit = {{ var_password_pam_ocredit }}
+    mode: 420
   when:
+  - DISA_STIG_RHEL_10_600230 | bool
   - accounts_password_pam_ocredit | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -3640,6 +3779,7 @@
   - '"libpwquality" in ansible_facts.packages'
   tags:
   - CCE-89297-6
+  - DISA-STIG-RHEL-10-600230
   - NIST-800-53-CM-6(a)
   - NIST-800-53-IA-5(1)(a)
   - NIST-800-53-IA-5(4)
@@ -3657,6 +3797,7 @@
     patterns: '*.conf'
   register: pwquality_conf_d_files
   when:
+  - DISA_STIG_RHEL_10_600250 | bool
   - accounts_password_pam_ucredit | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -3667,6 +3808,7 @@
   - '"libpwquality" in ansible_facts.packages'
   tags:
   - CCE-89959-1
+  - DISA-STIG-RHEL-10-600250
   - NIST-800-53-CM-6(a)
   - NIST-800-53-IA-5(1)(a)
   - NIST-800-53-IA-5(4)
@@ -3686,6 +3828,7 @@
     state: absent
   with_items: '{{ pwquality_conf_d_files.files }}'
   when:
+  - DISA_STIG_RHEL_10_600250 | bool
   - accounts_password_pam_ucredit | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -3696,6 +3839,7 @@
   - '"libpwquality" in ansible_facts.packages'
   tags:
   - CCE-89959-1
+  - DISA-STIG-RHEL-10-600250
   - NIST-800-53-CM-6(a)
   - NIST-800-53-IA-5(1)(a)
   - NIST-800-53-IA-5(4)
@@ -3714,7 +3858,9 @@
     dest: /etc/security/pwquality.conf
     regexp: ^#?\s*ucredit
     line: ucredit = {{ var_password_pam_ucredit }}
+    mode: 420
   when:
+  - DISA_STIG_RHEL_10_600250 | bool
   - accounts_password_pam_ucredit | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -3725,6 +3871,7 @@
   - '"libpwquality" in ansible_facts.packages'
   tags:
   - CCE-89959-1
+  - DISA-STIG-RHEL-10-600250
   - NIST-800-53-CM-6(a)
   - NIST-800-53-IA-5(1)(a)
   - NIST-800-53-IA-5(4)
@@ -3744,7 +3891,9 @@
     regexp: ^CtrlAltDelBurstAction
     line: CtrlAltDelBurstAction=none
     create: true
+    mode: 420
   when:
+  - DISA_STIG_RHEL_10_700950 | bool
   - disable_ctrlaltdel_burstaction | bool
   - disable_strategy | bool
   - high_severity | bool
@@ -3755,6 +3904,7 @@
   - '"systemd" in ansible_facts.packages'
   tags:
   - CCE-87627-6
+  - DISA-STIG-RHEL-10-700950
   - NIST-800-171-3.4.5
   - NIST-800-53-AC-6(1)
   - NIST-800-53-CM-6(a)
@@ -3773,6 +3923,7 @@
     masked: true
     state: stopped
   when:
+  - DISA_STIG_RHEL_10_700960 | bool
   - disable_ctrlaltdel_reboot | bool
   - disable_strategy | bool
   - high_severity | bool
@@ -3782,6 +3933,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-90035-7
+  - DISA-STIG-RHEL-10-700960
   - NIST-800-171-3.4.5
   - NIST-800-53-AC-6(1)
   - NIST-800-53-CM-6(a)
@@ -3909,6 +4061,7 @@
     contains: ^\s*ExecStart=.*$
   register: rescue_service_overrides_found
   when:
+  - DISA_STIG_RHEL_10_701260 | bool
   - low_complexity | bool
   - low_disruption | bool
   - medium_severity | bool
@@ -3918,6 +4071,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-90014-2
+  - DISA-STIG-RHEL-10-701260
   - NIST-800-171-3.1.1
   - NIST-800-171-3.4.5
   - NIST-800-53-AC-3
@@ -3934,6 +4088,7 @@
   ansible.builtin.set_fact:
     rescue_service_remediation_target_file: '{{ rescue_service_overrides_found.files | map(attribute=''path'') | list }}'
   when:
+  - DISA_STIG_RHEL_10_701260 | bool
   - low_complexity | bool
   - low_disruption | bool
   - medium_severity | bool
@@ -3944,6 +4099,7 @@
   - rescue_service_overrides_found.matched is defined and rescue_service_overrides_found.matched > 0
   tags:
   - CCE-90014-2
+  - DISA-STIG-RHEL-10-701260
   - NIST-800-171-3.1.1
   - NIST-800-171-3.4.5
   - NIST-800-53-AC-3
@@ -3961,6 +4117,7 @@
     rescue_service_remediation_target_file:
     - /etc/systemd/system/rescue.service.d/10-oscap.conf
   when:
+  - DISA_STIG_RHEL_10_701260 | bool
   - low_complexity | bool
   - low_disruption | bool
   - medium_severity | bool
@@ -3971,6 +4128,7 @@
   - rescue_service_overrides_found.matched is defined and rescue_service_overrides_found.matched == 0
   tags:
   - CCE-90014-2
+  - DISA-STIG-RHEL-10-701260
   - NIST-800-171-3.1.1
   - NIST-800-171-3.4.5
   - NIST-800-53-AC-3
@@ -3993,6 +4151,7 @@
     - -/usr/lib/systemd/systemd-sulogin-shell rescue
   loop: '{{ rescue_service_remediation_target_file }}'
   when:
+  - DISA_STIG_RHEL_10_701260 | bool
   - low_complexity | bool
   - low_disruption | bool
   - medium_severity | bool
@@ -4002,6 +4161,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-90014-2
+  - DISA-STIG-RHEL-10-701260
   - NIST-800-171-3.1.1
   - NIST-800-171-3.4.5
   - NIST-800-53-AC-3
@@ -4019,6 +4179,7 @@
     path: /usr/bin/authselect
   register: result_authselect_present
   when:
+  - DISA_STIG_RHEL_10_600455 | bool
   - configure_strategy | bool
   - high_severity | bool
   - low_complexity | bool
@@ -4029,6 +4190,7 @@
   tags:
   - CCE-86640-0
   - CJIS-5.5.2
+  - DISA-STIG-RHEL-10-600455
   - NIST-800-171-3.1.1
   - NIST-800-171-3.1.5
   - NIST-800-53-CM-6(a)
@@ -4087,6 +4249,7 @@
     - result_authselect_enable_feature_cmd is not skipped
     - result_authselect_enable_feature_cmd is success
   when:
+  - DISA_STIG_RHEL_10_600455 | bool
   - configure_strategy | bool
   - high_severity | bool
   - low_complexity | bool
@@ -4098,6 +4261,7 @@
   tags:
   - CCE-86640-0
   - CJIS-5.5.2
+  - DISA-STIG-RHEL-10-600455
   - NIST-800-171-3.1.1
   - NIST-800-171-3.1.5
   - NIST-800-53-CM-6(a)
@@ -4121,6 +4285,7 @@
   - /etc/pam.d/system-auth
   - /etc/pam.d/password-auth
   when:
+  - DISA_STIG_RHEL_10_600455 | bool
   - configure_strategy | bool
   - high_severity | bool
   - low_complexity | bool
@@ -4132,6 +4297,7 @@
   tags:
   - CCE-86640-0
   - CJIS-5.5.2
+  - DISA-STIG-RHEL-10-600455
   - NIST-800-171-3.1.1
   - NIST-800-171-3.1.5
   - NIST-800-53-CM-6(a)
@@ -4385,6 +4551,7 @@
     src: /etc/default/grub
   register: etc_default_grub
   when:
+  - DISA_STIG_RHEL_10_700990 | bool
   - grub2_vsyscall_argument | bool
   - low_disruption | bool
   - medium_complexity | bool
@@ -4395,6 +4562,7 @@
   - ansible_architecture == "x86_64"
   tags:
   - CCE-87153-3
+  - DISA-STIG-RHEL-10-700990
   - NIST-800-53-CM-7(a)
   - grub2_vsyscall_argument
   - low_disruption
@@ -4410,6 +4578,7 @@
   changed_when: false
   failed_when: false
   when:
+  - DISA_STIG_RHEL_10_700990 | bool
   - grub2_vsyscall_argument | bool
   - low_disruption | bool
   - medium_complexity | bool
@@ -4420,6 +4589,7 @@
   - ansible_architecture == "x86_64"
   tags:
   - CCE-87153-3
+  - DISA-STIG-RHEL-10-700990
   - NIST-800-53-CM-7(a)
   - grub2_vsyscall_argument
   - low_disruption
@@ -4431,6 +4601,7 @@
 - name: Update grub defaults and the bootloader menu
   ansible.builtin.command: /sbin/grubby --update-kernel=ALL --args="vsyscall=none"
   when:
+  - DISA_STIG_RHEL_10_700990 | bool
   - grub2_vsyscall_argument | bool
   - low_disruption | bool
   - medium_complexity | bool
@@ -4442,6 +4613,7 @@
   - (grubby_info.stdout is not search('vsyscall=none')) or ((etc_default_grub['content'] | b64decode) is not search('vsyscall=none'))
   tags:
   - CCE-87153-3
+  - DISA-STIG-RHEL-10-700990
   - NIST-800-53-CM-7(a)
   - grub2_vsyscall_argument
   - low_disruption
@@ -4481,6 +4653,7 @@
       create: true
       path: /etc/kernel/cmdline
       line: audit=1
+      mode: 420
     when: cmdline_stat is defined and not cmdline_stat.stat.exists
   - name: Append /etc/kernel/cmdline contains audit=1
     ansible.builtin.lineinfile:
@@ -4538,6 +4711,7 @@
       create: true
       path: /etc/kernel/cmdline
       line: audit_backlog_limit=8192
+      mode: 420
     when: cmdline_stat is defined and not cmdline_stat.stat.exists
   - name: Append /etc/kernel/cmdline contains audit_backlog_limit=8192
     ansible.builtin.lineinfile:
@@ -4595,6 +4769,7 @@
       create: true
       path: /etc/kernel/cmdline
       line: init_on_alloc=1
+      mode: 420
     when: cmdline_stat is defined and not cmdline_stat.stat.exists
   - name: Append /etc/kernel/cmdline contains init_on_alloc=1
     ansible.builtin.lineinfile:
@@ -4652,6 +4827,7 @@
       create: true
       path: /etc/kernel/cmdline
       line: page_alloc.shuffle=1
+      mode: 420
     when: cmdline_stat is defined and not cmdline_stat.stat.exists
   - name: Append /etc/kernel/cmdline contains page_alloc.shuffle=1
     ansible.builtin.lineinfile:
@@ -4724,7 +4900,9 @@
     dest: /etc/modprobe.d/can.conf
     regexp: install\s+can
     line: install can /bin/false
+    mode: 420
   when:
+  - DISA_STIG_RHEL_10_701100 | bool
   - disable_strategy | bool
   - kernel_module_can_disabled | bool
   - low_complexity | bool
@@ -4734,6 +4912,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-89282-8
+  - DISA-STIG-RHEL-10-701100
   - NIST-800-53-AC-18
   - disable_strategy
   - kernel_module_can_disabled
@@ -4748,7 +4927,9 @@
     dest: /etc/modprobe.d/can.conf
     regexp: ^blacklist can$
     line: blacklist can
+    mode: 420
   when:
+  - DISA_STIG_RHEL_10_701100 | bool
   - disable_strategy | bool
   - kernel_module_can_disabled | bool
   - low_complexity | bool
@@ -4758,6 +4939,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-89282-8
+  - DISA-STIG-RHEL-10-701100
   - NIST-800-53-AC-18
   - disable_strategy
   - kernel_module_can_disabled
@@ -4772,7 +4954,9 @@
     dest: /etc/modprobe.d/sctp.conf
     regexp: install\s+sctp
     line: install sctp /bin/false
+    mode: 420
   when:
+  - DISA_STIG_RHEL_10_701110 | bool
   - disable_strategy | bool
   - kernel_module_sctp_disabled | bool
   - low_complexity | bool
@@ -4783,6 +4967,7 @@
   tags:
   - CCE-90489-6
   - CJIS-5.10.1
+  - DISA-STIG-RHEL-10-701110
   - NIST-800-171-3.4.6
   - NIST-800-53-CM-6(a)
   - NIST-800-53-CM-7(a)
@@ -4803,7 +4988,9 @@
     dest: /etc/modprobe.d/sctp.conf
     regexp: ^blacklist sctp$
     line: blacklist sctp
+    mode: 420
   when:
+  - DISA_STIG_RHEL_10_701110 | bool
   - disable_strategy | bool
   - kernel_module_sctp_disabled | bool
   - low_complexity | bool
@@ -4814,6 +5001,7 @@
   tags:
   - CCE-90489-6
   - CJIS-5.10.1
+  - DISA-STIG-RHEL-10-701110
   - NIST-800-171-3.4.6
   - NIST-800-53-CM-6(a)
   - NIST-800-53-CM-7(a)
@@ -4834,7 +5022,9 @@
     dest: /etc/modprobe.d/tipc.conf
     regexp: install\s+tipc
     line: install tipc /bin/false
+    mode: 420
   when:
+  - DISA_STIG_RHEL_10_701120 | bool
   - disable_strategy | bool
   - kernel_module_tipc_disabled | bool
   - low_complexity | bool
@@ -4844,6 +5034,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-86569-1
+  - DISA-STIG-RHEL-10-701120
   - NIST-800-53-CM-6(a)
   - NIST-800-53-CM-7(a)
   - NIST-800-53-CM-7(b)
@@ -4860,7 +5051,9 @@
     dest: /etc/modprobe.d/tipc.conf
     regexp: ^blacklist tipc$
     line: blacklist tipc
+    mode: 420
   when:
+  - DISA_STIG_RHEL_10_701120 | bool
   - disable_strategy | bool
   - kernel_module_tipc_disabled | bool
   - low_complexity | bool
@@ -4870,6 +5063,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-86569-1
+  - DISA-STIG-RHEL-10-701120
   - NIST-800-53-CM-6(a)
   - NIST-800-53-CM-7(a)
   - NIST-800-53-CM-7(b)
@@ -4886,7 +5080,9 @@
     dest: /etc/modprobe.d/bluetooth.conf
     regexp: install\s+bluetooth
     line: install bluetooth /bin/false
+    mode: 420
   when:
+  - DISA_STIG_RHEL_10_700860 | bool
   - disable_strategy | bool
   - kernel_module_bluetooth_disabled | bool
   - low_complexity | bool
@@ -4897,6 +5093,7 @@
   tags:
   - CCE-87455-2
   - CJIS-5.13.1.3
+  - DISA-STIG-RHEL-10-700860
   - NIST-800-171-3.1.16
   - NIST-800-53-AC-18(3)
   - NIST-800-53-AC-18(a)
@@ -4917,7 +5114,9 @@
     dest: /etc/modprobe.d/bluetooth.conf
     regexp: ^blacklist bluetooth$
     line: blacklist bluetooth
+    mode: 420
   when:
+  - DISA_STIG_RHEL_10_700860 | bool
   - disable_strategy | bool
   - kernel_module_bluetooth_disabled | bool
   - low_complexity | bool
@@ -4928,6 +5127,7 @@
   tags:
   - CCE-87455-2
   - CJIS-5.13.1.3
+  - DISA-STIG-RHEL-10-700860
   - NIST-800-171-3.1.16
   - NIST-800-53-AC-18(3)
   - NIST-800-53-AC-18(a)
@@ -4949,18 +5149,20 @@
   changed_when: false
   check_mode: false
   when:
+  - DISA_STIG_RHEL_10_400400 | bool
   - configure_strategy | bool
   - high_disruption | bool
   - low_complexity | bool
   - medium_severity | bool
   - mount_option_var_log_audit_nodev | bool
   - no_reboot_needed | bool
-  - ( not ( "kernel-core" in ansible_facts.packages and "rpm-ostree" in ansible_facts.packages and "bootc" in ansible_facts.packages
-    and not "openshift-kubelet" in ansible_facts.packages and "ostree" in ansible_proc_cmdline ) and not ( ansible_virtualization_type
-    in ["docker", "lxc", "openvz", "podman", "container"] ) )
+  - ( not ( "kernel-core" in ansible_facts.packages and "bootc" in ansible_facts.packages and not "openshift-kubelet" in ansible_facts.packages
+    and "ostree" in ansible_proc_cmdline ) and not ( ansible_virtualization_type in ["docker", "lxc", "openvz", "podman",
+    "container"] ) )
   - '"/var/log/audit" in ansible_mounts | map(attribute="mount") | list'
   tags:
   - CCE-87220-0
+  - DISA-STIG-RHEL-10-400400
   - NIST-800-53-AC-6
   - NIST-800-53-AC-6(1)
   - NIST-800-53-CM-6(a)
@@ -4981,20 +5183,22 @@
   - '{{ device_name.stdout_lines[0].split() | map(''lower'') | list }}'
   - '{{ device_name.stdout_lines[1].split() | list }}'
   when:
+  - DISA_STIG_RHEL_10_400400 | bool
   - configure_strategy | bool
   - high_disruption | bool
   - low_complexity | bool
   - medium_severity | bool
   - mount_option_var_log_audit_nodev | bool
   - no_reboot_needed | bool
-  - ( not ( "kernel-core" in ansible_facts.packages and "rpm-ostree" in ansible_facts.packages and "bootc" in ansible_facts.packages
-    and not "openshift-kubelet" in ansible_facts.packages and "ostree" in ansible_proc_cmdline ) and not ( ansible_virtualization_type
-    in ["docker", "lxc", "openvz", "podman", "container"] ) )
+  - ( not ( "kernel-core" in ansible_facts.packages and "bootc" in ansible_facts.packages and not "openshift-kubelet" in ansible_facts.packages
+    and "ostree" in ansible_proc_cmdline ) and not ( ansible_virtualization_type in ["docker", "lxc", "openvz", "podman",
+    "container"] ) )
   - '"/var/log/audit" in ansible_mounts | map(attribute="mount") | list'
   - device_name.stdout is defined and device_name.stdout_lines is defined
   - (device_name.stdout | length > 0)
   tags:
   - CCE-87220-0
+  - DISA-STIG-RHEL-10-400400
   - NIST-800-53-AC-6
   - NIST-800-53-AC-6(1)
   - NIST-800-53-CM-6(a)
@@ -5021,21 +5225,23 @@
     - ''
     - defaults
   when:
+  - DISA_STIG_RHEL_10_400400 | bool
   - configure_strategy | bool
   - high_disruption | bool
   - low_complexity | bool
   - medium_severity | bool
   - mount_option_var_log_audit_nodev | bool
   - no_reboot_needed | bool
-  - ( not ( "kernel-core" in ansible_facts.packages and "rpm-ostree" in ansible_facts.packages and "bootc" in ansible_facts.packages
-    and not "openshift-kubelet" in ansible_facts.packages and "ostree" in ansible_proc_cmdline ) and not ( ansible_virtualization_type
-    in ["docker", "lxc", "openvz", "podman", "container"] ) )
+  - ( not ( "kernel-core" in ansible_facts.packages and "bootc" in ansible_facts.packages and not "openshift-kubelet" in ansible_facts.packages
+    and "ostree" in ansible_proc_cmdline ) and not ( ansible_virtualization_type in ["docker", "lxc", "openvz", "podman",
+    "container"] ) )
   - '"/var/log/audit" in ansible_mounts | map(attribute="mount") | list'
   - ("--fstab" | length == 0)
   - device_name.stdout is defined and device_name.stdout_lines is defined
   - (device_name.stdout | length == 0)
   tags:
   - CCE-87220-0
+  - DISA-STIG-RHEL-10-400400
   - NIST-800-53-AC-6
   - NIST-800-53-AC-6(1)
   - NIST-800-53-CM-6(a)
@@ -5054,19 +5260,21 @@
     mount_info: '{{ mount_info | combine( {''options'':''''~(mount_info.options | default(''''))~('','' if (mount_info.options
       | default('''')) else '''')~''nodev'' }) }}'
   when:
+  - DISA_STIG_RHEL_10_400400 | bool
   - configure_strategy | bool
   - high_disruption | bool
   - low_complexity | bool
   - medium_severity | bool
   - mount_option_var_log_audit_nodev | bool
   - no_reboot_needed | bool
-  - ( not ( "kernel-core" in ansible_facts.packages and "rpm-ostree" in ansible_facts.packages and "bootc" in ansible_facts.packages
-    and not "openshift-kubelet" in ansible_facts.packages and "ostree" in ansible_proc_cmdline ) and not ( ansible_virtualization_type
-    in ["docker", "lxc", "openvz", "podman", "container"] ) )
+  - ( not ( "kernel-core" in ansible_facts.packages and "bootc" in ansible_facts.packages and not "openshift-kubelet" in ansible_facts.packages
+    and "ostree" in ansible_proc_cmdline ) and not ( ansible_virtualization_type in ["docker", "lxc", "openvz", "podman",
+    "container"] ) )
   - '"/var/log/audit" in ansible_mounts | map(attribute="mount") | list'
   - mount_info is defined and "nodev" not in (mount_info.options | default(''))
   tags:
   - CCE-87220-0
+  - DISA-STIG-RHEL-10-400400
   - NIST-800-53-AC-6
   - NIST-800-53-AC-6(1)
   - NIST-800-53-CM-6(a)
@@ -5093,20 +5301,22 @@
   - '''target is busy'' not in (mount_result.msg | default(''''))'
   - '''already mounted'' not in (mount_result.msg | default(''''))'
   when:
+  - DISA_STIG_RHEL_10_400400 | bool
   - configure_strategy | bool
   - high_disruption | bool
   - low_complexity | bool
   - medium_severity | bool
   - mount_option_var_log_audit_nodev | bool
   - no_reboot_needed | bool
-  - ( not ( "kernel-core" in ansible_facts.packages and "rpm-ostree" in ansible_facts.packages and "bootc" in ansible_facts.packages
-    and not "openshift-kubelet" in ansible_facts.packages and "ostree" in ansible_proc_cmdline ) and not ( ansible_virtualization_type
-    in ["docker", "lxc", "openvz", "podman", "container"] ) )
+  - ( not ( "kernel-core" in ansible_facts.packages and "bootc" in ansible_facts.packages and not "openshift-kubelet" in ansible_facts.packages
+    and "ostree" in ansible_proc_cmdline ) and not ( ansible_virtualization_type in ["docker", "lxc", "openvz", "podman",
+    "container"] ) )
   - '"/var/log/audit" in ansible_mounts | map(attribute="mount") | list'
   - mount_info is defined
   - (device_name.stdout is defined and (device_name.stdout | length > 0)) or ("--fstab" | length == 0)
   tags:
   - CCE-87220-0
+  - DISA-STIG-RHEL-10-400400
   - NIST-800-53-AC-6
   - NIST-800-53-AC-6(1)
   - NIST-800-53-CM-6(a)
@@ -5127,18 +5337,20 @@
   changed_when: false
   check_mode: false
   when:
+  - DISA_STIG_RHEL_10_400405 | bool
   - configure_strategy | bool
   - high_disruption | bool
   - low_complexity | bool
   - medium_severity | bool
   - mount_option_var_log_audit_noexec | bool
   - no_reboot_needed | bool
-  - ( not ( "kernel-core" in ansible_facts.packages and "rpm-ostree" in ansible_facts.packages and "bootc" in ansible_facts.packages
-    and not "openshift-kubelet" in ansible_facts.packages and "ostree" in ansible_proc_cmdline ) and not ( ansible_virtualization_type
-    in ["docker", "lxc", "openvz", "podman", "container"] ) )
+  - ( not ( "kernel-core" in ansible_facts.packages and "bootc" in ansible_facts.packages and not "openshift-kubelet" in ansible_facts.packages
+    and "ostree" in ansible_proc_cmdline ) and not ( ansible_virtualization_type in ["docker", "lxc", "openvz", "podman",
+    "container"] ) )
   - '"/var/log/audit" in ansible_mounts | map(attribute="mount") | list'
   tags:
   - CCE-88957-6
+  - DISA-STIG-RHEL-10-400405
   - NIST-800-53-AC-6
   - NIST-800-53-AC-6(1)
   - NIST-800-53-CM-6(a)
@@ -5159,20 +5371,22 @@
   - '{{ device_name.stdout_lines[0].split() | map(''lower'') | list }}'
   - '{{ device_name.stdout_lines[1].split() | list }}'
   when:
+  - DISA_STIG_RHEL_10_400405 | bool
   - configure_strategy | bool
   - high_disruption | bool
   - low_complexity | bool
   - medium_severity | bool
   - mount_option_var_log_audit_noexec | bool
   - no_reboot_needed | bool
-  - ( not ( "kernel-core" in ansible_facts.packages and "rpm-ostree" in ansible_facts.packages and "bootc" in ansible_facts.packages
-    and not "openshift-kubelet" in ansible_facts.packages and "ostree" in ansible_proc_cmdline ) and not ( ansible_virtualization_type
-    in ["docker", "lxc", "openvz", "podman", "container"] ) )
+  - ( not ( "kernel-core" in ansible_facts.packages and "bootc" in ansible_facts.packages and not "openshift-kubelet" in ansible_facts.packages
+    and "ostree" in ansible_proc_cmdline ) and not ( ansible_virtualization_type in ["docker", "lxc", "openvz", "podman",
+    "container"] ) )
   - '"/var/log/audit" in ansible_mounts | map(attribute="mount") | list'
   - device_name.stdout is defined and device_name.stdout_lines is defined
   - (device_name.stdout | length > 0)
   tags:
   - CCE-88957-6
+  - DISA-STIG-RHEL-10-400405
   - NIST-800-53-AC-6
   - NIST-800-53-AC-6(1)
   - NIST-800-53-CM-6(a)
@@ -5199,21 +5413,23 @@
     - ''
     - defaults
   when:
+  - DISA_STIG_RHEL_10_400405 | bool
   - configure_strategy | bool
   - high_disruption | bool
   - low_complexity | bool
   - medium_severity | bool
   - mount_option_var_log_audit_noexec | bool
   - no_reboot_needed | bool
-  - ( not ( "kernel-core" in ansible_facts.packages and "rpm-ostree" in ansible_facts.packages and "bootc" in ansible_facts.packages
-    and not "openshift-kubelet" in ansible_facts.packages and "ostree" in ansible_proc_cmdline ) and not ( ansible_virtualization_type
-    in ["docker", "lxc", "openvz", "podman", "container"] ) )
+  - ( not ( "kernel-core" in ansible_facts.packages and "bootc" in ansible_facts.packages and not "openshift-kubelet" in ansible_facts.packages
+    and "ostree" in ansible_proc_cmdline ) and not ( ansible_virtualization_type in ["docker", "lxc", "openvz", "podman",
+    "container"] ) )
   - '"/var/log/audit" in ansible_mounts | map(attribute="mount") | list'
   - ("--fstab" | length == 0)
   - device_name.stdout is defined and device_name.stdout_lines is defined
   - (device_name.stdout | length == 0)
   tags:
   - CCE-88957-6
+  - DISA-STIG-RHEL-10-400405
   - NIST-800-53-AC-6
   - NIST-800-53-AC-6(1)
   - NIST-800-53-CM-6(a)
@@ -5232,19 +5448,21 @@
     mount_info: '{{ mount_info | combine( {''options'':''''~(mount_info.options | default(''''))~('','' if (mount_info.options
       | default('''')) else '''')~''noexec'' }) }}'
   when:
+  - DISA_STIG_RHEL_10_400405 | bool
   - configure_strategy | bool
   - high_disruption | bool
   - low_complexity | bool
   - medium_severity | bool
   - mount_option_var_log_audit_noexec | bool
   - no_reboot_needed | bool
-  - ( not ( "kernel-core" in ansible_facts.packages and "rpm-ostree" in ansible_facts.packages and "bootc" in ansible_facts.packages
-    and not "openshift-kubelet" in ansible_facts.packages and "ostree" in ansible_proc_cmdline ) and not ( ansible_virtualization_type
-    in ["docker", "lxc", "openvz", "podman", "container"] ) )
+  - ( not ( "kernel-core" in ansible_facts.packages and "bootc" in ansible_facts.packages and not "openshift-kubelet" in ansible_facts.packages
+    and "ostree" in ansible_proc_cmdline ) and not ( ansible_virtualization_type in ["docker", "lxc", "openvz", "podman",
+    "container"] ) )
   - '"/var/log/audit" in ansible_mounts | map(attribute="mount") | list'
   - mount_info is defined and "noexec" not in (mount_info.options | default(''))
   tags:
   - CCE-88957-6
+  - DISA-STIG-RHEL-10-400405
   - NIST-800-53-AC-6
   - NIST-800-53-AC-6(1)
   - NIST-800-53-CM-6(a)
@@ -5271,20 +5489,22 @@
   - '''target is busy'' not in (mount_result.msg | default(''''))'
   - '''already mounted'' not in (mount_result.msg | default(''''))'
   when:
+  - DISA_STIG_RHEL_10_400405 | bool
   - configure_strategy | bool
   - high_disruption | bool
   - low_complexity | bool
   - medium_severity | bool
   - mount_option_var_log_audit_noexec | bool
   - no_reboot_needed | bool
-  - ( not ( "kernel-core" in ansible_facts.packages and "rpm-ostree" in ansible_facts.packages and "bootc" in ansible_facts.packages
-    and not "openshift-kubelet" in ansible_facts.packages and "ostree" in ansible_proc_cmdline ) and not ( ansible_virtualization_type
-    in ["docker", "lxc", "openvz", "podman", "container"] ) )
+  - ( not ( "kernel-core" in ansible_facts.packages and "bootc" in ansible_facts.packages and not "openshift-kubelet" in ansible_facts.packages
+    and "ostree" in ansible_proc_cmdline ) and not ( ansible_virtualization_type in ["docker", "lxc", "openvz", "podman",
+    "container"] ) )
   - '"/var/log/audit" in ansible_mounts | map(attribute="mount") | list'
   - mount_info is defined
   - (device_name.stdout is defined and (device_name.stdout | length > 0)) or ("--fstab" | length == 0)
   tags:
   - CCE-88957-6
+  - DISA-STIG-RHEL-10-400405
   - NIST-800-53-AC-6
   - NIST-800-53-AC-6(1)
   - NIST-800-53-CM-6(a)
@@ -5305,18 +5525,20 @@
   changed_when: false
   check_mode: false
   when:
+  - DISA_STIG_RHEL_10_400410 | bool
   - configure_strategy | bool
   - high_disruption | bool
   - low_complexity | bool
   - medium_severity | bool
   - mount_option_var_log_audit_nosuid | bool
   - no_reboot_needed | bool
-  - ( not ( "kernel-core" in ansible_facts.packages and "rpm-ostree" in ansible_facts.packages and "bootc" in ansible_facts.packages
-    and not "openshift-kubelet" in ansible_facts.packages and "ostree" in ansible_proc_cmdline ) and not ( ansible_virtualization_type
-    in ["docker", "lxc", "openvz", "podman", "container"] ) )
+  - ( not ( "kernel-core" in ansible_facts.packages and "bootc" in ansible_facts.packages and not "openshift-kubelet" in ansible_facts.packages
+    and "ostree" in ansible_proc_cmdline ) and not ( ansible_virtualization_type in ["docker", "lxc", "openvz", "podman",
+    "container"] ) )
   - '"/var/log/audit" in ansible_mounts | map(attribute="mount") | list'
   tags:
   - CCE-90694-1
+  - DISA-STIG-RHEL-10-400410
   - NIST-800-53-AC-6
   - NIST-800-53-AC-6(1)
   - NIST-800-53-CM-6(a)
@@ -5337,20 +5559,22 @@
   - '{{ device_name.stdout_lines[0].split() | map(''lower'') | list }}'
   - '{{ device_name.stdout_lines[1].split() | list }}'
   when:
+  - DISA_STIG_RHEL_10_400410 | bool
   - configure_strategy | bool
   - high_disruption | bool
   - low_complexity | bool
   - medium_severity | bool
   - mount_option_var_log_audit_nosuid | bool
   - no_reboot_needed | bool
-  - ( not ( "kernel-core" in ansible_facts.packages and "rpm-ostree" in ansible_facts.packages and "bootc" in ansible_facts.packages
-    and not "openshift-kubelet" in ansible_facts.packages and "ostree" in ansible_proc_cmdline ) and not ( ansible_virtualization_type
-    in ["docker", "lxc", "openvz", "podman", "container"] ) )
+  - ( not ( "kernel-core" in ansible_facts.packages and "bootc" in ansible_facts.packages and not "openshift-kubelet" in ansible_facts.packages
+    and "ostree" in ansible_proc_cmdline ) and not ( ansible_virtualization_type in ["docker", "lxc", "openvz", "podman",
+    "container"] ) )
   - '"/var/log/audit" in ansible_mounts | map(attribute="mount") | list'
   - device_name.stdout is defined and device_name.stdout_lines is defined
   - (device_name.stdout | length > 0)
   tags:
   - CCE-90694-1
+  - DISA-STIG-RHEL-10-400410
   - NIST-800-53-AC-6
   - NIST-800-53-AC-6(1)
   - NIST-800-53-CM-6(a)
@@ -5377,21 +5601,23 @@
     - ''
     - defaults
   when:
+  - DISA_STIG_RHEL_10_400410 | bool
   - configure_strategy | bool
   - high_disruption | bool
   - low_complexity | bool
   - medium_severity | bool
   - mount_option_var_log_audit_nosuid | bool
   - no_reboot_needed | bool
-  - ( not ( "kernel-core" in ansible_facts.packages and "rpm-ostree" in ansible_facts.packages and "bootc" in ansible_facts.packages
-    and not "openshift-kubelet" in ansible_facts.packages and "ostree" in ansible_proc_cmdline ) and not ( ansible_virtualization_type
-    in ["docker", "lxc", "openvz", "podman", "container"] ) )
+  - ( not ( "kernel-core" in ansible_facts.packages and "bootc" in ansible_facts.packages and not "openshift-kubelet" in ansible_facts.packages
+    and "ostree" in ansible_proc_cmdline ) and not ( ansible_virtualization_type in ["docker", "lxc", "openvz", "podman",
+    "container"] ) )
   - '"/var/log/audit" in ansible_mounts | map(attribute="mount") | list'
   - ("--fstab" | length == 0)
   - device_name.stdout is defined and device_name.stdout_lines is defined
   - (device_name.stdout | length == 0)
   tags:
   - CCE-90694-1
+  - DISA-STIG-RHEL-10-400410
   - NIST-800-53-AC-6
   - NIST-800-53-AC-6(1)
   - NIST-800-53-CM-6(a)
@@ -5410,19 +5636,21 @@
     mount_info: '{{ mount_info | combine( {''options'':''''~(mount_info.options | default(''''))~('','' if (mount_info.options
       | default('''')) else '''')~''nosuid'' }) }}'
   when:
+  - DISA_STIG_RHEL_10_400410 | bool
   - configure_strategy | bool
   - high_disruption | bool
   - low_complexity | bool
   - medium_severity | bool
   - mount_option_var_log_audit_nosuid | bool
   - no_reboot_needed | bool
-  - ( not ( "kernel-core" in ansible_facts.packages and "rpm-ostree" in ansible_facts.packages and "bootc" in ansible_facts.packages
-    and not "openshift-kubelet" in ansible_facts.packages and "ostree" in ansible_proc_cmdline ) and not ( ansible_virtualization_type
-    in ["docker", "lxc", "openvz", "podman", "container"] ) )
+  - ( not ( "kernel-core" in ansible_facts.packages and "bootc" in ansible_facts.packages and not "openshift-kubelet" in ansible_facts.packages
+    and "ostree" in ansible_proc_cmdline ) and not ( ansible_virtualization_type in ["docker", "lxc", "openvz", "podman",
+    "container"] ) )
   - '"/var/log/audit" in ansible_mounts | map(attribute="mount") | list'
   - mount_info is defined and "nosuid" not in (mount_info.options | default(''))
   tags:
   - CCE-90694-1
+  - DISA-STIG-RHEL-10-400410
   - NIST-800-53-AC-6
   - NIST-800-53-AC-6(1)
   - NIST-800-53-CM-6(a)
@@ -5449,20 +5677,22 @@
   - '''target is busy'' not in (mount_result.msg | default(''''))'
   - '''already mounted'' not in (mount_result.msg | default(''''))'
   when:
+  - DISA_STIG_RHEL_10_400410 | bool
   - configure_strategy | bool
   - high_disruption | bool
   - low_complexity | bool
   - medium_severity | bool
   - mount_option_var_log_audit_nosuid | bool
   - no_reboot_needed | bool
-  - ( not ( "kernel-core" in ansible_facts.packages and "rpm-ostree" in ansible_facts.packages and "bootc" in ansible_facts.packages
-    and not "openshift-kubelet" in ansible_facts.packages and "ostree" in ansible_proc_cmdline ) and not ( ansible_virtualization_type
-    in ["docker", "lxc", "openvz", "podman", "container"] ) )
+  - ( not ( "kernel-core" in ansible_facts.packages and "bootc" in ansible_facts.packages and not "openshift-kubelet" in ansible_facts.packages
+    and "ostree" in ansible_proc_cmdline ) and not ( ansible_virtualization_type in ["docker", "lxc", "openvz", "podman",
+    "container"] ) )
   - '"/var/log/audit" in ansible_mounts | map(attribute="mount") | list'
   - mount_info is defined
   - (device_name.stdout is defined and (device_name.stdout | length > 0)) or ("--fstab" | length == 0)
   tags:
   - CCE-90694-1
+  - DISA-STIG-RHEL-10-400410
   - NIST-800-53-AC-6
   - NIST-800-53-AC-6(1)
   - NIST-800-53-CM-6(a)
@@ -5771,6 +6001,7 @@
     - /run/sysctl.d/
     - /usr/local/lib/sysctl.d/
   when:
+  - DISA_STIG_RHEL_10_701030 | bool
   - disable_strategy | bool
   - low_complexity | bool
   - low_severity | bool
@@ -5780,6 +6011,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-89000-4
+  - DISA-STIG-RHEL-10-701030
   - NIST-800-171-3.1.5
   - NIST-800-53-SI-11(a)
   - NIST-800-53-SI-11(b)
@@ -5798,6 +6030,7 @@
   changed_when: false
   failed_when: false
   when:
+  - DISA_STIG_RHEL_10_701030 | bool
   - disable_strategy | bool
   - low_complexity | bool
   - low_severity | bool
@@ -5807,6 +6040,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-89000-4
+  - DISA-STIG-RHEL-10-701030
   - NIST-800-171-3.1.5
   - NIST-800-53-SI-11(a)
   - NIST-800-53-SI-11(b)
@@ -5825,6 +6059,7 @@
   changed_when: false
   failed_when: false
   when:
+  - DISA_STIG_RHEL_10_701030 | bool
   - disable_strategy | bool
   - low_complexity | bool
   - low_severity | bool
@@ -5834,6 +6069,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-89000-4
+  - DISA-STIG-RHEL-10-701030
   - NIST-800-171-3.1.5
   - NIST-800-53-SI-11(a)
   - NIST-800-53-SI-11(b)
@@ -5851,6 +6087,7 @@
     replace: '#kernel.dmesg_restrict'
   loop: '{{ find_all_values.stdout_lines }}'
   when:
+  - DISA_STIG_RHEL_10_701030 | bool
   - disable_strategy | bool
   - low_complexity | bool
   - low_severity | bool
@@ -5862,6 +6099,7 @@
     | length
   tags:
   - CCE-89000-4
+  - DISA-STIG-RHEL-10-701030
   - NIST-800-171-3.1.5
   - NIST-800-53-SI-11(a)
   - NIST-800-53-SI-11(b)
@@ -5880,6 +6118,7 @@
   with_fileglob:
   - /etc/sysctl.conf
   when:
+  - DISA_STIG_RHEL_10_701030 | bool
   - disable_strategy | bool
   - low_complexity | bool
   - low_severity | bool
@@ -5889,6 +6128,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-89000-4
+  - DISA-STIG-RHEL-10-701030
   - NIST-800-171-3.1.5
   - NIST-800-53-SI-11(a)
   - NIST-800-53-SI-11(b)
@@ -5907,6 +6147,7 @@
     state: present
     reload: true
   when:
+  - DISA_STIG_RHEL_10_701030 | bool
   - disable_strategy | bool
   - low_complexity | bool
   - low_severity | bool
@@ -5916,6 +6157,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-89000-4
+  - DISA-STIG-RHEL-10-701030
   - NIST-800-171-3.1.5
   - NIST-800-53-SI-11(a)
   - NIST-800-53-SI-11(b)
@@ -5933,6 +6175,7 @@
     - /run/sysctl.d/
     - /usr/local/lib/sysctl.d/
   when:
+  - DISA_STIG_RHEL_10_701050 | bool
   - disable_strategy | bool
   - low_complexity | bool
   - medium_disruption | bool
@@ -5942,6 +6185,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-89232-3
+  - DISA-STIG-RHEL-10-701050
   - NIST-800-53-CM-6
   - disable_strategy
   - low_complexity
@@ -5958,6 +6202,7 @@
   changed_when: false
   failed_when: false
   when:
+  - DISA_STIG_RHEL_10_701050 | bool
   - disable_strategy | bool
   - low_complexity | bool
   - medium_disruption | bool
@@ -5967,6 +6212,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-89232-3
+  - DISA-STIG-RHEL-10-701050
   - NIST-800-53-CM-6
   - disable_strategy
   - low_complexity
@@ -5983,6 +6229,7 @@
   changed_when: false
   failed_when: false
   when:
+  - DISA_STIG_RHEL_10_701050 | bool
   - disable_strategy | bool
   - low_complexity | bool
   - medium_disruption | bool
@@ -5992,6 +6239,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-89232-3
+  - DISA-STIG-RHEL-10-701050
   - NIST-800-53-CM-6
   - disable_strategy
   - low_complexity
@@ -6007,6 +6255,7 @@
     replace: '#kernel.kexec_load_disabled'
   loop: '{{ find_all_values.stdout_lines }}'
   when:
+  - DISA_STIG_RHEL_10_701050 | bool
   - disable_strategy | bool
   - low_complexity | bool
   - medium_disruption | bool
@@ -6018,6 +6267,7 @@
     | length
   tags:
   - CCE-89232-3
+  - DISA-STIG-RHEL-10-701050
   - NIST-800-53-CM-6
   - disable_strategy
   - low_complexity
@@ -6034,6 +6284,7 @@
   with_fileglob:
   - /etc/sysctl.conf
   when:
+  - DISA_STIG_RHEL_10_701050 | bool
   - disable_strategy | bool
   - low_complexity | bool
   - medium_disruption | bool
@@ -6043,6 +6294,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-89232-3
+  - DISA-STIG-RHEL-10-701050
   - NIST-800-53-CM-6
   - disable_strategy
   - low_complexity
@@ -6059,6 +6311,7 @@
     state: present
     reload: true
   when:
+  - DISA_STIG_RHEL_10_701050 | bool
   - disable_strategy | bool
   - low_complexity | bool
   - medium_disruption | bool
@@ -6068,6 +6321,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-89232-3
+  - DISA-STIG-RHEL-10-701050
   - NIST-800-53-CM-6
   - disable_strategy
   - low_complexity
@@ -6083,6 +6337,7 @@
     - /run/sysctl.d/
     - /usr/local/lib/sysctl.d/
   when:
+  - DISA_STIG_RHEL_10_701040 | bool
   - disable_strategy | bool
   - low_complexity | bool
   - low_severity | bool
@@ -6092,6 +6347,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-90142-1
+  - DISA-STIG-RHEL-10-701040
   - NIST-800-53-AC-6
   - disable_strategy
   - low_complexity
@@ -6108,6 +6364,7 @@
   changed_when: false
   failed_when: false
   when:
+  - DISA_STIG_RHEL_10_701040 | bool
   - disable_strategy | bool
   - low_complexity | bool
   - low_severity | bool
@@ -6117,6 +6374,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-90142-1
+  - DISA-STIG-RHEL-10-701040
   - NIST-800-53-AC-6
   - disable_strategy
   - low_complexity
@@ -6133,6 +6391,7 @@
   changed_when: false
   failed_when: false
   when:
+  - DISA_STIG_RHEL_10_701040 | bool
   - disable_strategy | bool
   - low_complexity | bool
   - low_severity | bool
@@ -6142,6 +6401,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-90142-1
+  - DISA-STIG-RHEL-10-701040
   - NIST-800-53-AC-6
   - disable_strategy
   - low_complexity
@@ -6158,6 +6418,7 @@
     replace: '#kernel.perf_event_paranoid'
   loop: '{{ find_all_values.stdout_lines }}'
   when:
+  - DISA_STIG_RHEL_10_701040 | bool
   - disable_strategy | bool
   - low_complexity | bool
   - low_severity | bool
@@ -6169,6 +6430,7 @@
     | length
   tags:
   - CCE-90142-1
+  - DISA-STIG-RHEL-10-701040
   - NIST-800-53-AC-6
   - disable_strategy
   - low_complexity
@@ -6185,6 +6447,7 @@
   with_fileglob:
   - /etc/sysctl.conf
   when:
+  - DISA_STIG_RHEL_10_701040 | bool
   - disable_strategy | bool
   - low_complexity | bool
   - low_severity | bool
@@ -6194,6 +6457,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-90142-1
+  - DISA-STIG-RHEL-10-701040
   - NIST-800-53-AC-6
   - disable_strategy
   - low_complexity
@@ -6210,6 +6474,7 @@
     state: present
     reload: true
   when:
+  - DISA_STIG_RHEL_10_701040 | bool
   - disable_strategy | bool
   - low_complexity | bool
   - low_severity | bool
@@ -6219,6 +6484,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-90142-1
+  - DISA-STIG-RHEL-10-701040
   - NIST-800-53-AC-6
   - disable_strategy
   - low_complexity
@@ -6395,6 +6661,7 @@
     - /run/sysctl.d/
     - /usr/local/lib/sysctl.d/
   when:
+  - DISA_STIG_RHEL_10_701140 | bool
   - disable_strategy | bool
   - low_complexity | bool
   - medium_disruption | bool
@@ -6404,6 +6671,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-88785-1
+  - DISA-STIG-RHEL-10-701140
   - NIST-800-53-SC-7(10)
   - disable_strategy
   - low_complexity
@@ -6420,6 +6688,7 @@
   changed_when: false
   failed_when: false
   when:
+  - DISA_STIG_RHEL_10_701140 | bool
   - disable_strategy | bool
   - low_complexity | bool
   - medium_disruption | bool
@@ -6429,6 +6698,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-88785-1
+  - DISA-STIG-RHEL-10-701140
   - NIST-800-53-SC-7(10)
   - disable_strategy
   - low_complexity
@@ -6445,6 +6715,7 @@
   changed_when: false
   failed_when: false
   when:
+  - DISA_STIG_RHEL_10_701140 | bool
   - disable_strategy | bool
   - low_complexity | bool
   - medium_disruption | bool
@@ -6454,6 +6725,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-88785-1
+  - DISA-STIG-RHEL-10-701140
   - NIST-800-53-SC-7(10)
   - disable_strategy
   - low_complexity
@@ -6470,6 +6742,7 @@
     replace: '#kernel.yama.ptrace_scope'
   loop: '{{ find_all_values.stdout_lines }}'
   when:
+  - DISA_STIG_RHEL_10_701140 | bool
   - disable_strategy | bool
   - low_complexity | bool
   - medium_disruption | bool
@@ -6481,6 +6754,7 @@
     | length
   tags:
   - CCE-88785-1
+  - DISA-STIG-RHEL-10-701140
   - NIST-800-53-SC-7(10)
   - disable_strategy
   - low_complexity
@@ -6497,6 +6771,7 @@
   with_fileglob:
   - /etc/sysctl.conf
   when:
+  - DISA_STIG_RHEL_10_701140 | bool
   - disable_strategy | bool
   - low_complexity | bool
   - medium_disruption | bool
@@ -6506,6 +6781,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-88785-1
+  - DISA-STIG-RHEL-10-701140
   - NIST-800-53-SC-7(10)
   - disable_strategy
   - low_complexity
@@ -6522,6 +6798,7 @@
     state: present
     reload: true
   when:
+  - DISA_STIG_RHEL_10_701140 | bool
   - disable_strategy | bool
   - low_complexity | bool
   - medium_disruption | bool
@@ -6531,6 +6808,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-88785-1
+  - DISA-STIG-RHEL-10-701140
   - NIST-800-53-SC-7(10)
   - disable_strategy
   - low_complexity
@@ -6702,6 +6980,7 @@
   changed_when: false
   check_mode: false
   when:
+  - DISA_STIG_RHEL_10_701180 | bool
   - disable_strategy | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -6711,6 +6990,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-90438-3
+  - DISA-STIG-RHEL-10-701180
   - NIST-800-53-SC-7(10)
   - disable_strategy
   - low_complexity
@@ -6726,6 +7006,7 @@
     enabled: false
     masked: true
   when:
+  - DISA_STIG_RHEL_10_701180 | bool
   - disable_strategy | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -6736,6 +7017,7 @@
   - result_systemd_unit_files.stdout_lines is search("systemd-coredump.socket")
   tags:
   - CCE-90438-3
+  - DISA-STIG-RHEL-10-701180
   - NIST-800-53-SC-7(10)
   - disable_strategy
   - low_complexity
@@ -6751,6 +7033,7 @@
     - /run/sysctl.d/
     - /usr/local/lib/sysctl.d/
   when:
+  - DISA_STIG_RHEL_10_701060 | bool
   - disable_strategy | bool
   - low_complexity | bool
   - medium_disruption | bool
@@ -6760,6 +7043,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-88686-1
+  - DISA-STIG-RHEL-10-701060
   - NIST-800-53-CM-6(a)
   - NIST-800-53-SC-30
   - NIST-800-53-SC-30(2)
@@ -6779,6 +7063,7 @@
   changed_when: false
   failed_when: false
   when:
+  - DISA_STIG_RHEL_10_701060 | bool
   - disable_strategy | bool
   - low_complexity | bool
   - medium_disruption | bool
@@ -6788,6 +7073,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-88686-1
+  - DISA-STIG-RHEL-10-701060
   - NIST-800-53-CM-6(a)
   - NIST-800-53-SC-30
   - NIST-800-53-SC-30(2)
@@ -6808,6 +7094,7 @@
   changed_when: false
   failed_when: false
   when:
+  - DISA_STIG_RHEL_10_701060 | bool
   - disable_strategy | bool
   - low_complexity | bool
   - medium_disruption | bool
@@ -6817,6 +7104,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-88686-1
+  - DISA-STIG-RHEL-10-701060
   - NIST-800-53-CM-6(a)
   - NIST-800-53-SC-30
   - NIST-800-53-SC-30(2)
@@ -6836,6 +7124,7 @@
     replace: '#kernel.kptr_restrict'
   loop: '{{ find_all_values.stdout_lines }}'
   when:
+  - DISA_STIG_RHEL_10_701060 | bool
   - disable_strategy | bool
   - low_complexity | bool
   - medium_disruption | bool
@@ -6847,6 +7136,7 @@
     | length
   tags:
   - CCE-88686-1
+  - DISA-STIG-RHEL-10-701060
   - NIST-800-53-CM-6(a)
   - NIST-800-53-SC-30
   - NIST-800-53-SC-30(2)
@@ -6866,6 +7156,7 @@
   with_fileglob:
   - /etc/sysctl.conf
   when:
+  - DISA_STIG_RHEL_10_701060 | bool
   - disable_strategy | bool
   - low_complexity | bool
   - medium_disruption | bool
@@ -6875,6 +7166,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-88686-1
+  - DISA-STIG-RHEL-10-701060
   - NIST-800-53-CM-6(a)
   - NIST-800-53-SC-30
   - NIST-800-53-SC-30(2)
@@ -6894,6 +7186,7 @@
     state: present
     reload: true
   when:
+  - DISA_STIG_RHEL_10_701060 | bool
   - disable_strategy | bool
   - low_complexity | bool
   - medium_disruption | bool
@@ -6903,6 +7196,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-88686-1
+  - DISA-STIG-RHEL-10-701060
   - NIST-800-53-CM-6(a)
   - NIST-800-53-SC-30
   - NIST-800-53-SC-30(2)
@@ -6940,6 +7234,7 @@
       line: SELINUXTYPE={{ var_selinux_policy_name }}
       state: present
   when:
+  - DISA_STIG_RHEL_10_700400 | bool
   - configure_strategy | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -6949,6 +7244,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-88366-0
+  - DISA-STIG-RHEL-10-700400
   - NIST-800-171-3.1.2
   - NIST-800-171-3.7.2
   - NIST-800-53-AC-3
@@ -6971,6 +7267,7 @@
   check_mode: false
   changed_when: false
   when:
+  - DISA_STIG_RHEL_10_700420 | bool
   - high_severity | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -6980,6 +7277,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-89386-7
+  - DISA-STIG-RHEL-10-700420
   - NIST-800-171-3.1.2
   - NIST-800-171-3.7.2
   - NIST-800-53-AC-3
@@ -7021,6 +7319,7 @@
       line: SELINUX={{ var_selinux_state }}
       state: present
   when:
+  - DISA_STIG_RHEL_10_700420 | bool
   - high_severity | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -7030,6 +7329,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-89386-7
+  - DISA-STIG-RHEL-10-700420
   - NIST-800-171-3.1.2
   - NIST-800-171-3.7.2
   - NIST-800-53-AC-3
@@ -7051,7 +7351,9 @@
     state: touch
     access_time: preserve
     modification_time: preserve
+    mode: 420
   when:
+  - DISA_STIG_RHEL_10_700420 | bool
   - high_severity | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -7062,6 +7364,7 @@
   - current_selinux_state.stdout | lower != var_selinux_state
   tags:
   - CCE-89386-7
+  - DISA-STIG-RHEL-10-700420
   - NIST-800-171-3.1.2
   - NIST-800-171-3.7.2
   - NIST-800-53-AC-3
@@ -7103,6 +7406,7 @@
       line: port 0
       state: present
   when:
+  - DISA_STIG_RHEL_10_200542 | bool
   - chronyd_client_only | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -7113,6 +7417,7 @@
   - '"chrony" in ansible_facts.packages'
   tags:
   - CCE-89002-0
+  - DISA-STIG-RHEL-10-200542
   - NIST-800-53-AU-12(1)
   - NIST-800-53-AU-8(1)
   - chronyd_client_only
@@ -7224,6 +7529,7 @@
   changed_when: false
   register: _config_file_has_parameter
   when:
+  - DISA_STIG_RHEL_10_700630 | bool
   - disable_host_auth | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -7234,6 +7540,7 @@
   tags:
   - CCE-88057-5
   - CJIS-5.5.6
+  - DISA-STIG-RHEL-10-700630
   - NIST-800-171-3.1.12
   - NIST-800-53-AC-17(a)
   - NIST-800-53-AC-3
@@ -7256,6 +7563,7 @@
     contains: (?i)^\s*{{ "HostbasedAuthentication"| regex_escape }}\s+
   register: _config_dir_has_parameter
   when:
+  - DISA_STIG_RHEL_10_700630 | bool
   - disable_host_auth | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -7266,6 +7574,39 @@
   tags:
   - CCE-88057-5
   - CJIS-5.5.6
+  - DISA-STIG-RHEL-10-700630
+  - NIST-800-171-3.1.12
+  - NIST-800-53-AC-17(a)
+  - NIST-800-53-AC-3
+  - NIST-800-53-CM-6(a)
+  - NIST-800-53-CM-7(a)
+  - NIST-800-53-CM-7(b)
+  - PCI-DSSv4-8.3
+  - PCI-DSSv4-8.3.1
+  - disable_host_auth
+  - low_complexity
+  - low_disruption
+  - medium_severity
+  - no_reboot_needed
+  - restrict_strategy
+
+- name: Disable Host-Based Authentication - Check if /etc/ssh/sshd_config exists
+  ansible.builtin.stat:
+    path: /etc/ssh/sshd_config
+  register: _config_file_exists
+  when:
+  - DISA_STIG_RHEL_10_700630 | bool
+  - disable_host_auth | bool
+  - low_complexity | bool
+  - low_disruption | bool
+  - medium_severity | bool
+  - no_reboot_needed | bool
+  - restrict_strategy | bool
+  - '"kernel-core" in ansible_facts.packages'
+  tags:
+  - CCE-88057-5
+  - CJIS-5.5.6
+  - DISA-STIG-RHEL-10-700630
   - NIST-800-171-3.1.12
   - NIST-800-53-AC-17(a)
   - NIST-800-53-AC-3
@@ -7290,6 +7631,7 @@
   changed_when: false
   register: _config_file_correctly
   when:
+  - DISA_STIG_RHEL_10_700630 | bool
   - disable_host_auth | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -7297,9 +7639,11 @@
   - no_reboot_needed | bool
   - restrict_strategy | bool
   - '"kernel-core" in ansible_facts.packages'
+  - _config_file_exists.stat.exists
   tags:
   - CCE-88057-5
   - CJIS-5.5.6
+  - DISA-STIG-RHEL-10-700630
   - NIST-800-171-3.1.12
   - NIST-800-53-AC-17(a)
   - NIST-800-53-AC-3
@@ -7322,6 +7666,7 @@
     contains: (?i)^\s*{{ "HostbasedAuthentication"| regex_escape }}\s+no$
   register: _config_dir_correctly
   when:
+  - DISA_STIG_RHEL_10_700630 | bool
   - disable_host_auth | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -7332,6 +7677,7 @@
   tags:
   - CCE-88057-5
   - CJIS-5.5.6
+  - DISA-STIG-RHEL-10-700630
   - NIST-800-171-3.1.12
   - NIST-800-53-AC-17(a)
   - NIST-800-53-AC-3
@@ -7385,6 +7731,7 @@
       insertbefore: BOF
       validate: /usr/sbin/sshd -t -f %s
   when:
+  - DISA_STIG_RHEL_10_700630 | bool
   - disable_host_auth | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -7392,11 +7739,13 @@
   - no_reboot_needed | bool
   - restrict_strategy | bool
   - '"kernel-core" in ansible_facts.packages'
+  - _config_file_correctly is not skipped
   - (_config_file_correctly.found == 0 and _config_dir_correctly.matched == 0) or ((_config_file_has_parameter.found | int)
     + (_config_dir_has_parameter.matched | int)) != 1
   tags:
   - CCE-88057-5
   - CJIS-5.5.6
+  - DISA-STIG-RHEL-10-700630
   - NIST-800-171-3.1.12
   - NIST-800-53-AC-17(a)
   - NIST-800-53-AC-3
@@ -7420,6 +7769,7 @@
     modification_time: preserve
     access_time: preserve
   when:
+  - DISA_STIG_RHEL_10_700630 | bool
   - disable_host_auth | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -7430,6 +7780,7 @@
   tags:
   - CCE-88057-5
   - CJIS-5.5.6
+  - DISA-STIG-RHEL-10-700630
   - NIST-800-171-3.1.12
   - NIST-800-53-AC-17(a)
   - NIST-800-53-AC-3
@@ -7454,6 +7805,7 @@
   changed_when: false
   register: _config_file_has_parameter
   when:
+  - DISA_STIG_RHEL_10_700610 | bool
   - high_severity | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -7464,6 +7816,7 @@
   tags:
   - CCE-86753-1
   - CJIS-5.5.6
+  - DISA-STIG-RHEL-10-700610
   - NIST-800-171-3.1.1
   - NIST-800-171-3.1.5
   - NIST-800-53-AC-17(a)
@@ -7487,6 +7840,7 @@
     contains: (?i)^\s*{{ "PermitEmptyPasswords"| regex_escape }}\s+
   register: _config_dir_has_parameter
   when:
+  - DISA_STIG_RHEL_10_700610 | bool
   - high_severity | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -7497,6 +7851,40 @@
   tags:
   - CCE-86753-1
   - CJIS-5.5.6
+  - DISA-STIG-RHEL-10-700610
+  - NIST-800-171-3.1.1
+  - NIST-800-171-3.1.5
+  - NIST-800-53-AC-17(a)
+  - NIST-800-53-CM-6(a)
+  - NIST-800-53-CM-7(a)
+  - NIST-800-53-CM-7(b)
+  - PCI-DSS-Req-2.2.4
+  - PCI-DSSv4-2.2
+  - PCI-DSSv4-2.2.6
+  - high_severity
+  - low_complexity
+  - low_disruption
+  - no_reboot_needed
+  - restrict_strategy
+  - sshd_disable_empty_passwords
+
+- name: Disable SSH Access via Empty Passwords - Check if /etc/ssh/sshd_config exists
+  ansible.builtin.stat:
+    path: /etc/ssh/sshd_config
+  register: _config_file_exists
+  when:
+  - DISA_STIG_RHEL_10_700610 | bool
+  - high_severity | bool
+  - low_complexity | bool
+  - low_disruption | bool
+  - no_reboot_needed | bool
+  - restrict_strategy | bool
+  - sshd_disable_empty_passwords | bool
+  - '"kernel-core" in ansible_facts.packages'
+  tags:
+  - CCE-86753-1
+  - CJIS-5.5.6
+  - DISA-STIG-RHEL-10-700610
   - NIST-800-171-3.1.1
   - NIST-800-171-3.1.5
   - NIST-800-53-AC-17(a)
@@ -7522,6 +7910,7 @@
   changed_when: false
   register: _config_file_correctly
   when:
+  - DISA_STIG_RHEL_10_700610 | bool
   - high_severity | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -7529,9 +7918,11 @@
   - restrict_strategy | bool
   - sshd_disable_empty_passwords | bool
   - '"kernel-core" in ansible_facts.packages'
+  - _config_file_exists.stat.exists
   tags:
   - CCE-86753-1
   - CJIS-5.5.6
+  - DISA-STIG-RHEL-10-700610
   - NIST-800-171-3.1.1
   - NIST-800-171-3.1.5
   - NIST-800-53-AC-17(a)
@@ -7555,6 +7946,7 @@
     contains: (?i)^\s*{{ "PermitEmptyPasswords"| regex_escape }}\s+no$
   register: _config_dir_correctly
   when:
+  - DISA_STIG_RHEL_10_700610 | bool
   - high_severity | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -7565,6 +7957,7 @@
   tags:
   - CCE-86753-1
   - CJIS-5.5.6
+  - DISA-STIG-RHEL-10-700610
   - NIST-800-171-3.1.1
   - NIST-800-171-3.1.5
   - NIST-800-53-AC-17(a)
@@ -7619,6 +8012,7 @@
       insertbefore: BOF
       validate: /usr/sbin/sshd -t -f %s
   when:
+  - DISA_STIG_RHEL_10_700610 | bool
   - high_severity | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -7626,11 +8020,13 @@
   - restrict_strategy | bool
   - sshd_disable_empty_passwords | bool
   - '"kernel-core" in ansible_facts.packages'
+  - _config_file_correctly is not skipped
   - (_config_file_correctly.found == 0 and _config_dir_correctly.matched == 0) or ((_config_file_has_parameter.found | int)
     + (_config_dir_has_parameter.matched | int)) != 1
   tags:
   - CCE-86753-1
   - CJIS-5.5.6
+  - DISA-STIG-RHEL-10-700610
   - NIST-800-171-3.1.1
   - NIST-800-171-3.1.5
   - NIST-800-53-AC-17(a)
@@ -7655,6 +8051,7 @@
     modification_time: preserve
     access_time: preserve
   when:
+  - DISA_STIG_RHEL_10_700610 | bool
   - high_severity | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -7665,6 +8062,7 @@
   tags:
   - CCE-86753-1
   - CJIS-5.5.6
+  - DISA-STIG-RHEL-10-700610
   - NIST-800-171-3.1.1
   - NIST-800-171-3.1.5
   - NIST-800-53-AC-17(a)
@@ -7690,6 +8088,7 @@
   changed_when: false
   register: _config_file_has_parameter
   when:
+  - DISA_STIG_RHEL_10_700510 | bool
   - low_complexity | bool
   - low_disruption | bool
   - medium_severity | bool
@@ -7699,6 +8098,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-89145-7
+  - DISA-STIG-RHEL-10-700510
   - NIST-800-171-3.1.12
   - NIST-800-53-AC-17(a)
   - NIST-800-53-CM-6(a)
@@ -7718,6 +8118,7 @@
     contains: (?i)^\s*{{ "GSSAPIAuthentication"| regex_escape }}\s+
   register: _config_dir_has_parameter
   when:
+  - DISA_STIG_RHEL_10_700510 | bool
   - low_complexity | bool
   - low_disruption | bool
   - medium_severity | bool
@@ -7727,6 +8128,35 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-89145-7
+  - DISA-STIG-RHEL-10-700510
+  - NIST-800-171-3.1.12
+  - NIST-800-53-AC-17(a)
+  - NIST-800-53-CM-6(a)
+  - NIST-800-53-CM-7(a)
+  - NIST-800-53-CM-7(b)
+  - low_complexity
+  - low_disruption
+  - medium_severity
+  - no_reboot_needed
+  - restrict_strategy
+  - sshd_disable_gssapi_auth
+
+- name: Disable GSSAPI Authentication - Check if /etc/ssh/sshd_config exists
+  ansible.builtin.stat:
+    path: /etc/ssh/sshd_config
+  register: _config_file_exists
+  when:
+  - DISA_STIG_RHEL_10_700510 | bool
+  - low_complexity | bool
+  - low_disruption | bool
+  - medium_severity | bool
+  - no_reboot_needed | bool
+  - restrict_strategy | bool
+  - sshd_disable_gssapi_auth | bool
+  - '"kernel-core" in ansible_facts.packages'
+  tags:
+  - CCE-89145-7
+  - DISA-STIG-RHEL-10-700510
   - NIST-800-171-3.1.12
   - NIST-800-53-AC-17(a)
   - NIST-800-53-CM-6(a)
@@ -7748,6 +8178,7 @@
   changed_when: false
   register: _config_file_correctly
   when:
+  - DISA_STIG_RHEL_10_700510 | bool
   - low_complexity | bool
   - low_disruption | bool
   - medium_severity | bool
@@ -7755,8 +8186,10 @@
   - restrict_strategy | bool
   - sshd_disable_gssapi_auth | bool
   - '"kernel-core" in ansible_facts.packages'
+  - _config_file_exists.stat.exists
   tags:
   - CCE-89145-7
+  - DISA-STIG-RHEL-10-700510
   - NIST-800-171-3.1.12
   - NIST-800-53-AC-17(a)
   - NIST-800-53-CM-6(a)
@@ -7776,6 +8209,7 @@
     contains: (?i)^\s*{{ "GSSAPIAuthentication"| regex_escape }}\s+no$
   register: _config_dir_correctly
   when:
+  - DISA_STIG_RHEL_10_700510 | bool
   - low_complexity | bool
   - low_disruption | bool
   - medium_severity | bool
@@ -7785,6 +8219,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-89145-7
+  - DISA-STIG-RHEL-10-700510
   - NIST-800-171-3.1.12
   - NIST-800-53-AC-17(a)
   - NIST-800-53-CM-6(a)
@@ -7835,6 +8270,7 @@
       insertbefore: BOF
       validate: /usr/sbin/sshd -t -f %s
   when:
+  - DISA_STIG_RHEL_10_700510 | bool
   - low_complexity | bool
   - low_disruption | bool
   - medium_severity | bool
@@ -7842,10 +8278,12 @@
   - restrict_strategy | bool
   - sshd_disable_gssapi_auth | bool
   - '"kernel-core" in ansible_facts.packages'
+  - _config_file_correctly is not skipped
   - (_config_file_correctly.found == 0 and _config_dir_correctly.matched == 0) or ((_config_file_has_parameter.found | int)
     + (_config_dir_has_parameter.matched | int)) != 1
   tags:
   - CCE-89145-7
+  - DISA-STIG-RHEL-10-700510
   - NIST-800-171-3.1.12
   - NIST-800-53-AC-17(a)
   - NIST-800-53-CM-6(a)
@@ -7866,6 +8304,7 @@
     modification_time: preserve
     access_time: preserve
   when:
+  - DISA_STIG_RHEL_10_700510 | bool
   - low_complexity | bool
   - low_disruption | bool
   - medium_severity | bool
@@ -7875,6 +8314,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-89145-7
+  - DISA-STIG-RHEL-10-700510
   - NIST-800-171-3.1.12
   - NIST-800-53-AC-17(a)
   - NIST-800-53-CM-6(a)
@@ -7896,6 +8336,7 @@
   changed_when: false
   register: _config_file_has_parameter
   when:
+  - DISA_STIG_RHEL_10_700520 | bool
   - low_complexity | bool
   - low_disruption | bool
   - medium_severity | bool
@@ -7905,6 +8346,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-90591-9
+  - DISA-STIG-RHEL-10-700520
   - NIST-800-171-3.1.12
   - NIST-800-53-AC-17(a)
   - NIST-800-53-CM-6(a)
@@ -7924,6 +8366,7 @@
     contains: (?i)^\s*{{ "KerberosAuthentication"| regex_escape }}\s+
   register: _config_dir_has_parameter
   when:
+  - DISA_STIG_RHEL_10_700520 | bool
   - low_complexity | bool
   - low_disruption | bool
   - medium_severity | bool
@@ -7933,6 +8376,35 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-90591-9
+  - DISA-STIG-RHEL-10-700520
+  - NIST-800-171-3.1.12
+  - NIST-800-53-AC-17(a)
+  - NIST-800-53-CM-6(a)
+  - NIST-800-53-CM-7(a)
+  - NIST-800-53-CM-7(b)
+  - low_complexity
+  - low_disruption
+  - medium_severity
+  - no_reboot_needed
+  - restrict_strategy
+  - sshd_disable_kerb_auth
+
+- name: Disable Kerberos Authentication - Check if /etc/ssh/sshd_config exists
+  ansible.builtin.stat:
+    path: /etc/ssh/sshd_config
+  register: _config_file_exists
+  when:
+  - DISA_STIG_RHEL_10_700520 | bool
+  - low_complexity | bool
+  - low_disruption | bool
+  - medium_severity | bool
+  - no_reboot_needed | bool
+  - restrict_strategy | bool
+  - sshd_disable_kerb_auth | bool
+  - '"kernel-core" in ansible_facts.packages'
+  tags:
+  - CCE-90591-9
+  - DISA-STIG-RHEL-10-700520
   - NIST-800-171-3.1.12
   - NIST-800-53-AC-17(a)
   - NIST-800-53-CM-6(a)
@@ -7954,6 +8426,7 @@
   changed_when: false
   register: _config_file_correctly
   when:
+  - DISA_STIG_RHEL_10_700520 | bool
   - low_complexity | bool
   - low_disruption | bool
   - medium_severity | bool
@@ -7961,8 +8434,10 @@
   - restrict_strategy | bool
   - sshd_disable_kerb_auth | bool
   - '"kernel-core" in ansible_facts.packages'
+  - _config_file_exists.stat.exists
   tags:
   - CCE-90591-9
+  - DISA-STIG-RHEL-10-700520
   - NIST-800-171-3.1.12
   - NIST-800-53-AC-17(a)
   - NIST-800-53-CM-6(a)
@@ -7982,6 +8457,7 @@
     contains: (?i)^\s*{{ "KerberosAuthentication"| regex_escape }}\s+no$
   register: _config_dir_correctly
   when:
+  - DISA_STIG_RHEL_10_700520 | bool
   - low_complexity | bool
   - low_disruption | bool
   - medium_severity | bool
@@ -7991,6 +8467,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-90591-9
+  - DISA-STIG-RHEL-10-700520
   - NIST-800-171-3.1.12
   - NIST-800-53-AC-17(a)
   - NIST-800-53-CM-6(a)
@@ -8041,6 +8518,7 @@
       insertbefore: BOF
       validate: /usr/sbin/sshd -t -f %s
   when:
+  - DISA_STIG_RHEL_10_700520 | bool
   - low_complexity | bool
   - low_disruption | bool
   - medium_severity | bool
@@ -8048,10 +8526,12 @@
   - restrict_strategy | bool
   - sshd_disable_kerb_auth | bool
   - '"kernel-core" in ansible_facts.packages'
+  - _config_file_correctly is not skipped
   - (_config_file_correctly.found == 0 and _config_dir_correctly.matched == 0) or ((_config_file_has_parameter.found | int)
     + (_config_dir_has_parameter.matched | int)) != 1
   tags:
   - CCE-90591-9
+  - DISA-STIG-RHEL-10-700520
   - NIST-800-171-3.1.12
   - NIST-800-53-AC-17(a)
   - NIST-800-53-CM-6(a)
@@ -8072,6 +8552,7 @@
     modification_time: preserve
     access_time: preserve
   when:
+  - DISA_STIG_RHEL_10_700520 | bool
   - low_complexity | bool
   - low_disruption | bool
   - medium_severity | bool
@@ -8081,6 +8562,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-90591-9
+  - DISA-STIG-RHEL-10-700520
   - NIST-800-171-3.1.12
   - NIST-800-53-AC-17(a)
   - NIST-800-53-CM-6(a)
@@ -8102,6 +8584,7 @@
   changed_when: false
   register: _config_file_has_parameter
   when:
+  - DISA_STIG_RHEL_10_700620 | bool
   - low_complexity | bool
   - low_disruption | bool
   - medium_severity | bool
@@ -8112,6 +8595,7 @@
   tags:
   - CCE-89730-6
   - CJIS-5.5.6
+  - DISA-STIG-RHEL-10-700620
   - NIST-800-171-3.1.1
   - NIST-800-171-3.1.5
   - NIST-800-53-AC-17(a)
@@ -8138,6 +8622,7 @@
     contains: (?i)^\s*{{ "PermitRootLogin"| regex_escape }}\s+
   register: _config_dir_has_parameter
   when:
+  - DISA_STIG_RHEL_10_700620 | bool
   - low_complexity | bool
   - low_disruption | bool
   - medium_severity | bool
@@ -8148,6 +8633,43 @@
   tags:
   - CCE-89730-6
   - CJIS-5.5.6
+  - DISA-STIG-RHEL-10-700620
+  - NIST-800-171-3.1.1
+  - NIST-800-171-3.1.5
+  - NIST-800-53-AC-17(a)
+  - NIST-800-53-AC-6(2)
+  - NIST-800-53-CM-6(a)
+  - NIST-800-53-CM-7(a)
+  - NIST-800-53-CM-7(b)
+  - NIST-800-53-IA-2
+  - NIST-800-53-IA-2(5)
+  - PCI-DSS-Req-2.2.4
+  - PCI-DSSv4-2.2
+  - PCI-DSSv4-2.2.6
+  - low_complexity
+  - low_disruption
+  - medium_severity
+  - no_reboot_needed
+  - restrict_strategy
+  - sshd_disable_root_login
+
+- name: Disable SSH Root Login - Check if /etc/ssh/sshd_config exists
+  ansible.builtin.stat:
+    path: /etc/ssh/sshd_config
+  register: _config_file_exists
+  when:
+  - DISA_STIG_RHEL_10_700620 | bool
+  - low_complexity | bool
+  - low_disruption | bool
+  - medium_severity | bool
+  - no_reboot_needed | bool
+  - restrict_strategy | bool
+  - sshd_disable_root_login | bool
+  - '"kernel-core" in ansible_facts.packages'
+  tags:
+  - CCE-89730-6
+  - CJIS-5.5.6
+  - DISA-STIG-RHEL-10-700620
   - NIST-800-171-3.1.1
   - NIST-800-171-3.1.5
   - NIST-800-53-AC-17(a)
@@ -8176,6 +8698,7 @@
   changed_when: false
   register: _config_file_correctly
   when:
+  - DISA_STIG_RHEL_10_700620 | bool
   - low_complexity | bool
   - low_disruption | bool
   - medium_severity | bool
@@ -8183,9 +8706,11 @@
   - restrict_strategy | bool
   - sshd_disable_root_login | bool
   - '"kernel-core" in ansible_facts.packages'
+  - _config_file_exists.stat.exists
   tags:
   - CCE-89730-6
   - CJIS-5.5.6
+  - DISA-STIG-RHEL-10-700620
   - NIST-800-171-3.1.1
   - NIST-800-171-3.1.5
   - NIST-800-53-AC-17(a)
@@ -8212,6 +8737,7 @@
     contains: (?i)^\s*{{ "PermitRootLogin"| regex_escape }}\s+no$
   register: _config_dir_correctly
   when:
+  - DISA_STIG_RHEL_10_700620 | bool
   - low_complexity | bool
   - low_disruption | bool
   - medium_severity | bool
@@ -8222,6 +8748,7 @@
   tags:
   - CCE-89730-6
   - CJIS-5.5.6
+  - DISA-STIG-RHEL-10-700620
   - NIST-800-171-3.1.1
   - NIST-800-171-3.1.5
   - NIST-800-53-AC-17(a)
@@ -8279,6 +8806,7 @@
       insertbefore: BOF
       validate: /usr/sbin/sshd -t -f %s
   when:
+  - DISA_STIG_RHEL_10_700620 | bool
   - low_complexity | bool
   - low_disruption | bool
   - medium_severity | bool
@@ -8286,11 +8814,13 @@
   - restrict_strategy | bool
   - sshd_disable_root_login | bool
   - '"kernel-core" in ansible_facts.packages'
+  - _config_file_correctly is not skipped
   - (_config_file_correctly.found == 0 and _config_dir_correctly.matched == 0) or ((_config_file_has_parameter.found | int)
     + (_config_dir_has_parameter.matched | int)) != 1
   tags:
   - CCE-89730-6
   - CJIS-5.5.6
+  - DISA-STIG-RHEL-10-700620
   - NIST-800-171-3.1.1
   - NIST-800-171-3.1.5
   - NIST-800-53-AC-17(a)
@@ -8318,6 +8848,7 @@
     modification_time: preserve
     access_time: preserve
   when:
+  - DISA_STIG_RHEL_10_700620 | bool
   - low_complexity | bool
   - low_disruption | bool
   - medium_severity | bool
@@ -8328,6 +8859,7 @@
   tags:
   - CCE-89730-6
   - CJIS-5.5.6
+  - DISA-STIG-RHEL-10-700620
   - NIST-800-171-3.1.1
   - NIST-800-171-3.1.5
   - NIST-800-53-AC-17(a)
@@ -8356,6 +8888,7 @@
   changed_when: false
   register: _config_file_has_parameter
   when:
+  - DISA_STIG_RHEL_10_700010 | bool
   - low_complexity | bool
   - low_disruption | bool
   - medium_severity | bool
@@ -8366,6 +8899,7 @@
   tags:
   - CCE-86539-4
   - CJIS-5.5.6
+  - DISA-STIG-RHEL-10-700010
   - NIST-800-171-3.1.9
   - NIST-800-53-AC-17(a)
   - NIST-800-53-AC-8(a)
@@ -8386,6 +8920,7 @@
     contains: (?i)^\s*{{ "Banner"| regex_escape }}\s+
   register: _config_dir_has_parameter
   when:
+  - DISA_STIG_RHEL_10_700010 | bool
   - low_complexity | bool
   - low_disruption | bool
   - medium_severity | bool
@@ -8396,6 +8931,37 @@
   tags:
   - CCE-86539-4
   - CJIS-5.5.6
+  - DISA-STIG-RHEL-10-700010
+  - NIST-800-171-3.1.9
+  - NIST-800-53-AC-17(a)
+  - NIST-800-53-AC-8(a)
+  - NIST-800-53-AC-8(c)
+  - NIST-800-53-CM-6(a)
+  - PCI-DSS-Req-2.2.4
+  - low_complexity
+  - low_disruption
+  - medium_severity
+  - no_reboot_needed
+  - restrict_strategy
+  - sshd_enable_warning_banner
+
+- name: Enable SSH Warning Banner - Check if /etc/ssh/sshd_config exists
+  ansible.builtin.stat:
+    path: /etc/ssh/sshd_config
+  register: _config_file_exists
+  when:
+  - DISA_STIG_RHEL_10_700010 | bool
+  - low_complexity | bool
+  - low_disruption | bool
+  - medium_severity | bool
+  - no_reboot_needed | bool
+  - restrict_strategy | bool
+  - sshd_enable_warning_banner | bool
+  - '"kernel-core" in ansible_facts.packages'
+  tags:
+  - CCE-86539-4
+  - CJIS-5.5.6
+  - DISA-STIG-RHEL-10-700010
   - NIST-800-171-3.1.9
   - NIST-800-53-AC-17(a)
   - NIST-800-53-AC-8(a)
@@ -8418,6 +8984,7 @@
   changed_when: false
   register: _config_file_correctly
   when:
+  - DISA_STIG_RHEL_10_700010 | bool
   - low_complexity | bool
   - low_disruption | bool
   - medium_severity | bool
@@ -8425,9 +8992,11 @@
   - restrict_strategy | bool
   - sshd_enable_warning_banner | bool
   - '"kernel-core" in ansible_facts.packages'
+  - _config_file_exists.stat.exists
   tags:
   - CCE-86539-4
   - CJIS-5.5.6
+  - DISA-STIG-RHEL-10-700010
   - NIST-800-171-3.1.9
   - NIST-800-53-AC-17(a)
   - NIST-800-53-AC-8(a)
@@ -8448,6 +9017,7 @@
     contains: (?i)^\s*{{ "Banner"| regex_escape }}\s+/etc/issue$
   register: _config_dir_correctly
   when:
+  - DISA_STIG_RHEL_10_700010 | bool
   - low_complexity | bool
   - low_disruption | bool
   - medium_severity | bool
@@ -8458,6 +9028,7 @@
   tags:
   - CCE-86539-4
   - CJIS-5.5.6
+  - DISA-STIG-RHEL-10-700010
   - NIST-800-171-3.1.9
   - NIST-800-53-AC-17(a)
   - NIST-800-53-AC-8(a)
@@ -8509,6 +9080,7 @@
       insertbefore: BOF
       validate: /usr/sbin/sshd -t -f %s
   when:
+  - DISA_STIG_RHEL_10_700010 | bool
   - low_complexity | bool
   - low_disruption | bool
   - medium_severity | bool
@@ -8516,11 +9088,13 @@
   - restrict_strategy | bool
   - sshd_enable_warning_banner | bool
   - '"kernel-core" in ansible_facts.packages'
+  - _config_file_correctly is not skipped
   - (_config_file_correctly.found == 0 and _config_dir_correctly.matched == 0) or ((_config_file_has_parameter.found | int)
     + (_config_dir_has_parameter.matched | int)) != 1
   tags:
   - CCE-86539-4
   - CJIS-5.5.6
+  - DISA-STIG-RHEL-10-700010
   - NIST-800-171-3.1.9
   - NIST-800-53-AC-17(a)
   - NIST-800-53-AC-8(a)
@@ -8542,6 +9116,7 @@
     modification_time: preserve
     access_time: preserve
   when:
+  - DISA_STIG_RHEL_10_700010 | bool
   - low_complexity | bool
   - low_disruption | bool
   - medium_severity | bool
@@ -8552,6 +9127,7 @@
   tags:
   - CCE-86539-4
   - CJIS-5.5.6
+  - DISA-STIG-RHEL-10-700010
   - NIST-800-171-3.1.9
   - NIST-800-53-AC-17(a)
   - NIST-800-53-AC-8(a)
@@ -8574,6 +9150,7 @@
   changed_when: false
   register: _config_file_has_parameter
   when:
+  - DISA_STIG_RHEL_10_700650 | bool
   - configure_strategy | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -8583,6 +9160,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-88356-1
+  - DISA-STIG-RHEL-10-700650
   - configure_strategy
   - low_complexity
   - low_disruption
@@ -8597,6 +9175,7 @@
     contains: (?i)^\s*{{ "RekeyLimit"| regex_escape }}\s+
   register: _config_dir_has_parameter
   when:
+  - DISA_STIG_RHEL_10_700650 | bool
   - configure_strategy | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -8606,6 +9185,30 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-88356-1
+  - DISA-STIG-RHEL-10-700650
+  - configure_strategy
+  - low_complexity
+  - low_disruption
+  - medium_severity
+  - no_reboot_needed
+  - sshd_rekey_limit
+
+- name: Force frequent session key renegotiation - Check if /etc/ssh/sshd_config exists
+  ansible.builtin.stat:
+    path: /etc/ssh/sshd_config
+  register: _config_file_exists
+  when:
+  - DISA_STIG_RHEL_10_700650 | bool
+  - configure_strategy | bool
+  - low_complexity | bool
+  - low_disruption | bool
+  - medium_severity | bool
+  - no_reboot_needed | bool
+  - sshd_rekey_limit | bool
+  - '"kernel-core" in ansible_facts.packages'
+  tags:
+  - CCE-88356-1
+  - DISA-STIG-RHEL-10-700650
   - configure_strategy
   - low_complexity
   - low_disruption
@@ -8622,6 +9225,7 @@
   changed_when: false
   register: _config_file_correctly
   when:
+  - DISA_STIG_RHEL_10_700650 | bool
   - configure_strategy | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -8629,8 +9233,10 @@
   - no_reboot_needed | bool
   - sshd_rekey_limit | bool
   - '"kernel-core" in ansible_facts.packages'
+  - _config_file_exists.stat.exists
   tags:
   - CCE-88356-1
+  - DISA-STIG-RHEL-10-700650
   - configure_strategy
   - low_complexity
   - low_disruption
@@ -8645,6 +9251,7 @@
     contains: (?i)^\s*{{ "RekeyLimit"| regex_escape }}\s+{{ var_rekey_limit_size }} {{ var_rekey_limit_time }}$
   register: _config_dir_correctly
   when:
+  - DISA_STIG_RHEL_10_700650 | bool
   - configure_strategy | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -8654,6 +9261,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-88356-1
+  - DISA-STIG-RHEL-10-700650
   - configure_strategy
   - low_complexity
   - low_disruption
@@ -8699,6 +9307,7 @@
       insertbefore: BOF
       validate: /usr/sbin/sshd -t -f %s
   when:
+  - DISA_STIG_RHEL_10_700650 | bool
   - configure_strategy | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -8706,10 +9315,12 @@
   - no_reboot_needed | bool
   - sshd_rekey_limit | bool
   - '"kernel-core" in ansible_facts.packages'
+  - _config_file_correctly is not skipped
   - (_config_file_correctly.found == 0 and _config_dir_correctly.matched == 0) or ((_config_file_has_parameter.found | int)
     + (_config_dir_has_parameter.matched | int)) != 1
   tags:
   - CCE-88356-1
+  - DISA-STIG-RHEL-10-700650
   - configure_strategy
   - low_complexity
   - low_disruption
@@ -8725,6 +9336,7 @@
     modification_time: preserve
     access_time: preserve
   when:
+  - DISA_STIG_RHEL_10_700650 | bool
   - configure_strategy | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -8734,6 +9346,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-88356-1
+  - DISA-STIG-RHEL-10-700650
   - configure_strategy
   - low_complexity
   - low_disruption
@@ -8767,6 +9380,7 @@
       line: AuditBackend=LinuxAudit
       state: present
   when:
+  - DISA_STIG_RHEL_10_200563 | bool
   - configure_strategy | bool
   - configure_usbguard_auditbackend | bool
   - low_complexity | bool
@@ -8777,6 +9391,7 @@
   - '"usbguard" in ansible_facts.packages'
   tags:
   - CCE-87152-5
+  - DISA-STIG-RHEL-10-200563
   - NIST-800-53-AU-2
   - NIST-800-53-CM-8(3)
   - NIST-800-53-IA-3
@@ -8818,6 +9433,7 @@
     src: /etc/default/grub
   register: etc_default_grub
   when:
+  - DISA_STIG_RHEL_10_500005 | bool
   - grub2_audit_argument | bool
   - low_disruption | bool
   - low_severity | bool
@@ -8829,6 +9445,7 @@
   tags:
   - CCE-88376-9
   - CJIS-5.4.1.1
+  - DISA-STIG-RHEL-10-500005
   - NIST-800-171-3.3.1
   - NIST-800-53-AC-17(1)
   - NIST-800-53-AU-10
@@ -8852,6 +9469,7 @@
   changed_when: false
   failed_when: false
   when:
+  - DISA_STIG_RHEL_10_500005 | bool
   - grub2_audit_argument | bool
   - low_disruption | bool
   - low_severity | bool
@@ -8863,6 +9481,7 @@
   tags:
   - CCE-88376-9
   - CJIS-5.4.1.1
+  - DISA-STIG-RHEL-10-500005
   - NIST-800-171-3.3.1
   - NIST-800-53-AC-17(1)
   - NIST-800-53-AU-10
@@ -8882,6 +9501,7 @@
 - name: Update grub defaults and the bootloader menu
   ansible.builtin.command: /sbin/grubby --update-kernel=ALL --args="audit=1"
   when:
+  - DISA_STIG_RHEL_10_500005 | bool
   - grub2_audit_argument | bool
   - low_disruption | bool
   - low_severity | bool
@@ -8894,6 +9514,7 @@
   tags:
   - CCE-88376-9
   - CJIS-5.4.1.1
+  - DISA-STIG-RHEL-10-500005
   - NIST-800-171-3.3.1
   - NIST-800-53-AC-17(1)
   - NIST-800-53-AU-10
@@ -8915,6 +9536,7 @@
     src: /etc/default/grub
   register: etc_default_grub
   when:
+  - DISA_STIG_RHEL_10_500030 | bool
   - grub2_audit_backlog_limit_argument | bool
   - low_disruption | bool
   - low_severity | bool
@@ -8925,6 +9547,7 @@
   - '"grub2-common" in ansible_facts.packages'
   tags:
   - CCE-88192-0
+  - DISA-STIG-RHEL-10-500030
   - NIST-800-53-CM-6(a)
   - PCI-DSSv4-10.7
   - PCI-DSSv4-10.7.2
@@ -8942,6 +9565,7 @@
   changed_when: false
   failed_when: false
   when:
+  - DISA_STIG_RHEL_10_500030 | bool
   - grub2_audit_backlog_limit_argument | bool
   - low_disruption | bool
   - low_severity | bool
@@ -8952,6 +9576,7 @@
   - '"grub2-common" in ansible_facts.packages'
   tags:
   - CCE-88192-0
+  - DISA-STIG-RHEL-10-500030
   - NIST-800-53-CM-6(a)
   - PCI-DSSv4-10.7
   - PCI-DSSv4-10.7.2
@@ -8965,6 +9590,7 @@
 - name: Update grub defaults and the bootloader menu
   ansible.builtin.command: /sbin/grubby --update-kernel=ALL --args="audit_backlog_limit={{ var_audit_backlog_limit }}"
   when:
+  - DISA_STIG_RHEL_10_500030 | bool
   - grub2_audit_backlog_limit_argument | bool
   - low_disruption | bool
   - low_severity | bool
@@ -8977,6 +9603,7 @@
     | b64decode) is not search('audit_backlog_limit=' ~ var_audit_backlog_limit))
   tags:
   - CCE-88192-0
+  - DISA-STIG-RHEL-10-500030
   - NIST-800-53-CM-6(a)
   - PCI-DSSv4-10.7
   - PCI-DSSv4-10.7.2
@@ -8994,6 +9621,7 @@
     line: flush = {{ var_auditd_flush }}
     state: present
     create: true
+    mode: u-x,g-wx,o-rwx
   when:
   - auditd_data_retention_flush | bool
   - low_complexity | bool
@@ -9022,6 +9650,7 @@
       path: /etc/audit/auditd.conf
       create: true
       regexp: (?i)(?i)^\s*freq\s*=\s*
+      mode: u-x,g-wx,o-rwx
       state: absent
     check_mode: true
     changed_when: false
@@ -9031,6 +9660,7 @@
       path: /etc/audit/auditd.conf
       create: true
       regexp: (?i)(?i)^\s*freq\s*=\s*
+      mode: u-x,g-wx,o-rwx
       state: absent
     when: dupes.found is defined and dupes.found > 1
   - name: Insert correct line to /etc/audit/auditd.conf
@@ -9038,9 +9668,11 @@
       path: /etc/audit/auditd.conf
       create: true
       regexp: (?i)(?i)^\s*freq\s*=\s*
+      mode: u-x,g-wx,o-rwx
       line: freq = {{ var_auditd_freq }}
       state: present
   when:
+  - DISA_STIG_RHEL_10_500125 | bool
   - auditd_freq | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -9051,6 +9683,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-87482-6
+  - DISA-STIG-RHEL-10-500125
   - NIST-800-53-CM-6
   - auditd_freq
   - low_complexity
@@ -9066,6 +9699,7 @@
       path: /etc/audit/auditd.conf
       create: true
       regexp: (?i)(?i)^\s*log_format\s*=\s*
+      mode: u-x,g-wx,o-rwx
       state: absent
     check_mode: true
     changed_when: false
@@ -9075,6 +9709,7 @@
       path: /etc/audit/auditd.conf
       create: true
       regexp: (?i)(?i)^\s*log_format\s*=\s*
+      mode: u-x,g-wx,o-rwx
       state: absent
     when: dupes.found is defined and dupes.found > 1
   - name: Insert correct line to /etc/audit/auditd.conf
@@ -9082,9 +9717,11 @@
       path: /etc/audit/auditd.conf
       create: true
       regexp: (?i)(?i)^\s*log_format\s*=\s*
+      mode: u-x,g-wx,o-rwx
       line: log_format = ENRICHED
       state: present
   when:
+  - DISA_STIG_RHEL_10_500120 | bool
   - auditd_log_format | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -9095,6 +9732,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-88921-2
+  - DISA-STIG-RHEL-10-500120
   - NIST-800-53-AU-3
   - NIST-800-53-CM-6
   - auditd_log_format
@@ -9107,6 +9745,7 @@
 - name: Set type of computer node name logging in audit logs - Define Value to Be Used in the Remediation
   ansible.builtin.set_fact: auditd_name_format_split="{{ var_auditd_name_format.split('|')[0] }}"
   when:
+  - DISA_STIG_RHEL_10_500045 | bool
   - auditd_name_format | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -9117,6 +9756,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-87429-7
+  - DISA-STIG-RHEL-10-500045
   - NIST-800-53-AU-3
   - NIST-800-53-CM-6
   - PCI-DSSv4-10.2
@@ -9135,6 +9775,7 @@
       path: /etc/audit/auditd.conf
       create: true
       regexp: (?i)(?i)^\s*name_format\s*=\s*
+      mode: u-x,g-wx,o-rwx
       state: absent
     check_mode: true
     changed_when: false
@@ -9144,6 +9785,7 @@
       path: /etc/audit/auditd.conf
       create: true
       regexp: (?i)(?i)^\s*name_format\s*=\s*
+      mode: u-x,g-wx,o-rwx
       state: absent
     when: dupes.found is defined and dupes.found > 1
   - name: Insert correct line to /etc/audit/auditd.conf
@@ -9151,9 +9793,11 @@
       path: /etc/audit/auditd.conf
       create: true
       regexp: (?i)(?i)^\s*name_format\s*=\s*
+      mode: u-x,g-wx,o-rwx
       line: name_format = {{ auditd_name_format_split }}
       state: present
   when:
+  - DISA_STIG_RHEL_10_500045 | bool
   - auditd_name_format | bool
   - low_complexity | bool
   - low_disruption | bool
@@ -9164,6 +9808,7 @@
   - '"kernel-core" in ansible_facts.packages'
   tags:
   - CCE-87429-7
+  - DISA-STIG-RHEL-10-500045
   - NIST-800-53-AU-3
   - NIST-800-53-CM-6
   - PCI-DSSv4-10.2
@@ -9192,6 +9837,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_access_failed | bool
   - low_complexity | bool
@@ -9251,6 +9897,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_access_failed_aarch64 | bool
   - low_complexity | bool
@@ -9306,6 +9953,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_access_failed_ppc64le | bool
   - low_complexity | bool
@@ -9362,6 +10010,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_access_success | bool
   - low_complexity | bool
@@ -9418,6 +10067,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_access_success_aarch64 | bool
   - low_complexity | bool
@@ -9472,6 +10122,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_access_success_ppc64le | bool
   - low_complexity | bool
@@ -9542,6 +10193,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_basic_configuration | bool
   - low_complexity | bool
@@ -9614,6 +10266,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_create_failed | bool
   - low_complexity | bool
@@ -9680,6 +10333,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_create_failed_aarch64 | bool
   - low_complexity | bool
@@ -9742,6 +10396,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_create_failed_ppc64le | bool
   - low_complexity | bool
@@ -9804,6 +10459,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_create_success | bool
   - low_complexity | bool
@@ -9862,6 +10518,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_create_success_aarch64 | bool
   - low_complexity | bool
@@ -9918,6 +10575,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_create_success_ppc64le | bool
   - low_complexity | bool
@@ -9976,6 +10634,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_delete_failed | bool
   - low_complexity | bool
@@ -10034,6 +10693,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_delete_failed_aarch64 | bool
   - low_complexity | bool
@@ -10088,6 +10748,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_delete_failed_ppc64le | bool
   - low_complexity | bool
@@ -10142,6 +10803,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_delete_success | bool
   - low_complexity | bool
@@ -10196,6 +10858,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_delete_success_aarch64 | bool
   - low_complexity | bool
@@ -10248,6 +10911,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_delete_success_ppc64le | bool
   - low_complexity | bool
@@ -10301,6 +10965,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_immutable_login_uids | bool
   - low_complexity | bool
@@ -10373,6 +11038,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_modify_failed | bool
   - low_complexity | bool
@@ -10443,6 +11109,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_modify_failed_aarch64 | bool
   - low_complexity | bool
@@ -10505,6 +11172,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_modify_failed_ppc64le | bool
   - low_complexity | bool
@@ -10567,6 +11235,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_modify_success | bool
   - low_complexity | bool
@@ -10627,6 +11296,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_modify_success_aarch64 | bool
   - low_complexity | bool
@@ -10683,6 +11353,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_modify_success_ppc64le | bool
   - low_complexity | bool
@@ -10743,6 +11414,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_module_load | bool
   - low_complexity | bool
@@ -10799,6 +11471,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_module_load_ppc64le | bool
   - low_complexity | bool
@@ -11069,6 +11742,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_ospp_general | bool
   - low_complexity | bool
@@ -11335,6 +12009,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_ospp_general_aarch64 | bool
   - low_complexity | bool
@@ -11541,6 +12216,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_ospp_general_ppc64le | bool
   - low_complexity | bool
@@ -11599,6 +12275,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_owner_change_failed | bool
   - low_complexity | bool
@@ -11657,6 +12334,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_owner_change_failed_aarch64 | bool
   - low_complexity | bool
@@ -11711,6 +12389,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_owner_change_failed_ppc64le | bool
   - low_complexity | bool
@@ -11765,6 +12444,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_owner_change_success | bool
   - low_complexity | bool
@@ -11819,6 +12499,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_owner_change_success_aarch64 | bool
   - low_complexity | bool
@@ -11871,6 +12552,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_owner_change_success_ppc64le | bool
   - low_complexity | bool
@@ -11933,6 +12615,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_perm_change_failed | bool
   - low_complexity | bool
@@ -11995,6 +12678,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_perm_change_failed_aarch64 | bool
   - low_complexity | bool
@@ -12051,6 +12735,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_perm_change_failed_ppc64le | bool
   - low_complexity | bool
@@ -12107,6 +12792,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_perm_change_success | bool
   - low_complexity | bool
@@ -12163,6 +12849,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_perm_change_success_aarch64 | bool
   - low_complexity | bool
@@ -12216,6 +12903,7 @@
 
       '
     force: true
+    mode: 420
   when:
   - audit_perm_change_success_ppc64le | bool
   - low_complexity | bool
